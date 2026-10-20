@@ -21,7 +21,7 @@
 
 
     <div class="cm-hero-out" style="position: relative; flex-grow: 1; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 72px 24px 112px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-      <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+      <div class="cm-par-slow" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
         <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; color: #5FE0CC">{{ $s->hero_eyebrow }}</div>
         <h1 style="margin: 0; font-size: clamp(40px, 5.4vw, 68px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; text-wrap: balance">{{ $s->hero_title }}</h1>
         <p style="margin: 0; max-width: 520px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; color: #B7C0C9">{{ $s->hero_subtitle }}</p>
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div style="position: relative; flex: 1 1 460px; min-width: 0">
+      <div class="cm-par" style="position: relative; flex: 1 1 460px; min-width: 0">
         <div aria-hidden="true" class="cm-anim" style="position: absolute; left: 10%; right: 10%; top: 10%; bottom: 10%; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,191,169,0.35), transparent); filter: blur(30px); animation: cm-glow 6s ease-in-out infinite"></div>
         <figure role="img" aria-label="Terminal que muestra el proceso de un proyecto: analizar procesos, diseñar la base de datos, programar y entregar" style="position: relative; margin: 0; border-radius: 16px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
           <div style="display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-bottom: 1px solid #1C2329">

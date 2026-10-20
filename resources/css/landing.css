@@ -73,3 +73,58 @@ body[data-hero-bg="puntos"] .cm-bg[data-bg="puntos"],body[data-hero-bg="perspect
 .js .cm-shot{animation-play-state:paused}
 .js .cm-shot.is-playing{animation-play-state:running}
 .js .cm-shot.is-playing:hover{animation-play-state:paused}
+
+/* ===== Efectos de scroll estilo Apple (los controla scroll-fx.js; todo se desactiva con prefers-reduced-motion) ===== */
+section[id]{scroll-margin-top:72px}
+
+/* Barra de progreso de lectura */
+.cm-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;pointer-events:none;background:linear-gradient(90deg,#1FBFA9,#5FE0CC);transform-origin:0 50%;transform:scaleX(var(--scroll-p,0));will-change:transform}
+
+/* Menú: se oscurece un poco al empezar el scroll */
+.cm-nav{transition:background-color .4s ease,border-color .4s ease}
+.cm-nav.is-scrolled{background:rgba(8,9,11,.9)!important;border-bottom-color:rgba(255,255,255,.1)!important}
+
+/* Hero: parallax y profundidad mientras se hace scroll */
+.js .cm-par{transform:perspective(1200px) translate3d(0,calc(var(--hero-p,0)*-70px),0) rotateX(calc(var(--hero-p,0)*9deg)) scale(calc(1 - var(--hero-p,0)*.07));transform-origin:50% 100%;will-change:transform}
+.js .cm-par-slow{transform:translate3d(0,calc(var(--hero-p,0)*-28px),0);will-change:transform}
+
+/* Frase fija: la sección se queda pegada y las palabras se encienden con el scroll */
+.js .cm-pin{position:relative;height:230vh}
+.js .cm-pin-stick{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.js .cm-pin-stick>div{padding-top:0!important;padding-bottom:0!important}
+.js .cm-pin .cm-word,.js .cm-pin .cm-word-a{animation:none;transition:color .45s ease,text-shadow .45s ease}
+.js .cm-pin .cm-word{color:#2B333B}
+.js .cm-pin .cm-word-a{color:#21302E}
+.js .cm-pin .cm-word.is-lit{color:#F1F4F6}
+.js .cm-pin .cm-word-a.is-lit{color:#1FBFA9;text-shadow:0 0 28px rgba(31,191,169,.35)}
+
+/* Tarjetas: aparición escalonada y brillo que sigue al cursor */
+@supports (animation-timeline: view()){
+.cm-reveal.cm-card{animation-range:entry calc(var(--i,0)*4%) cover calc(25% + var(--i,0)*5%)}
+}
+@supports not (animation-timeline: view()){
+.js .cm-reveal.cm-card,.js .cm-proj{transition-delay:calc(var(--i,0)*90ms)}
+}
+.cm-card{position:relative}
+.cm-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(31,191,169,.14),transparent 60%)}
+.cm-card:hover::after{opacity:1}
+
+/* Portafolio: inclinación 3D siguiendo al cursor */
+.cm-proj .cm-frame{transition:translate .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease,border-color .4s ease,transform .25s ease-out;transform:perspective(900px) rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg))}
+
+/* Apps: la imagen se desplaza dentro de la tarjeta (parallax) */
+.js .cm-par-img{transform:translate3d(0,calc(var(--p,0)*-14px),0) scale(1.12);will-change:transform}
+
+/* Botones magnéticos */
+.cm-btn{transition:scale .35s cubic-bezier(.2,.8,.2,1),translate .25s ease-out,background-color .3s ease,box-shadow .35s ease;translate:var(--tx,0) var(--ty,0)}
+
+@media (prefers-reduced-motion: reduce){
+.js .cm-par,.js .cm-par-slow,.js .cm-par-img{transform:none!important}
+.js .cm-pin{height:auto}
+.js .cm-pin-stick{position:static;height:auto;display:block}
+.js .cm-pin-stick>div{padding-top:140px!important;padding-bottom:60px!important}
+.js .cm-pin .cm-word{color:#F1F4F6}
+.js .cm-pin .cm-word-a{color:#1FBFA9}
+.cm-proj .cm-frame{transform:none}
+.cm-card::after{display:none}
+}

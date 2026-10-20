@@ -25,3 +25,5 @@ const shotObserver = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.cm-shot').forEach((el) => shotObserver.observe(el));
+
+import './scroll-fx.js';
