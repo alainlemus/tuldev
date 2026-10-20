@@ -20,6 +20,15 @@ use App\Models\Service;
 use App\Models\Technology;
 use App\Models\User;
 
+/** Texto visible de una página: contenido más atributos de accesibilidad. */
+function visibleText(string $html): string
+{
+    preg_match_all('/(?:placeholder|aria-label|title|alt)="([^"]*)"/', $html, $attributes);
+    $text = strip_tags(preg_replace('#<(script|style)\b.*?</\1>#is', ' ', $html));
+
+    return $text.' '.implode(' ', $attributes[1]);
+}
+
 it('redirige al login a quien no ha iniciado sesión', function (string $path) {
     $this->get($path)->assertRedirect('/admin/login');
 })->with(['/admin', '/admin/leads', '/admin/services', '/admin/projects', '/admin/apps', '/admin/technologies', '/admin/process-steps', '/admin/faqs', '/admin/stats', '/admin/testimonials', '/admin/manage-site-settings']);
@@ -70,7 +79,10 @@ it('carga las páginas del panel para un administrador', function () {
     ];
 
     foreach ($urls as $url) {
-        $this->get($url)->assertSuccessful();
+        $html = $this->get($url)->assertSuccessful()->getContent();
+
+        // Si aparece una clave cruda (p. ej. filament-panels::...) es que falta una traducción al español.
+        expect(visibleText($html))->not->toMatch('/filament-[a-z]+::[a-z0-9_.-]+/', $url);
     }
 });
 
