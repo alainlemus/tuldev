@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\Concerns\ClearsLandingCache;
+use App\Models\Concerns\OptimizesImages;
+use App\Support\ImageOptimizer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
-    use ClearsLandingCache, HasFactory;
+    use ClearsLandingCache, HasFactory, OptimizesImages;
+
+    /** @var list<string> */
+    protected array $webpColumns = ['scroll_image'];
 
     protected $fillable = [
         'name', 'slug', 'description', 'tags', 'badge', 'scroll_image', 'scroll_alt',
@@ -43,5 +48,10 @@ class Project extends Model
     public function isOwnProduct(): bool
     {
         return $this->badge === 'Producto propio';
+    }
+
+    public function webpUrl(): ?string
+    {
+        return ImageOptimizer::webpUrl($this->scroll_image);
     }
 }

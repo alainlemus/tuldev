@@ -13,7 +13,7 @@
       <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
         <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
           <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">{{ $project->name }}</span></div>
-          <div class="cm-shot" role="img" aria-label="{{ $project->altText() }}" style="aspect-ratio: 16 / 10; background-image: url('{{ $project->scrollImageUrl() }}'); animation-duration: {{ $project->scroll_duration }}s{{ $project->scroll_delay ? '; animation-delay: '.$project->scroll_delay.'s' : '' }}"></div>
+          <div class="cm-shot" role="img" aria-label="{{ $project->altText() }}" style="aspect-ratio: 16 / 10; background-image: url('{{ $project->scrollImageUrl() }}'){!! $project->webpUrl() ? "; background-image: image-set(url('".e($project->webpUrl())."') type('image/webp'), url('".e($project->scrollImageUrl())."') type('image/jpeg'))" : '' !!}; animation-duration: {{ $project->scroll_duration }}s{{ $project->scroll_delay ? '; animation-delay: '.$project->scroll_delay.'s' : '' }}"></div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px">
           @if ($project->badge)

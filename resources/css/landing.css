@@ -69,3 +69,7 @@ body[data-hero-bg="puntos"] .cm-bg[data-bg="puntos"],body[data-hero-bg="perspect
 .js .cm-word.is-in{color:#F1F4F6}.js .cm-word-a.is-in{color:#1FBFA9}
 }
 @media (prefers-reduced-motion: reduce){.js .cm-reveal,.js .cm-proj,.js .cm-zoom{opacity:1!important;transform:none!important}}
+/* Las capturas del portafolio solo se animan mientras su tarjeta es visible (landing.js agrega .is-playing) */
+.js .cm-shot{animation-play-state:paused}
+.js .cm-shot.is-playing{animation-play-state:running}
+.js .cm-shot.is-playing:hover{animation-play-state:paused}

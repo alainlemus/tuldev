@@ -8,6 +8,7 @@ use App\Models\App;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Technology;
+use App\Support\ImageOptimizer;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -130,6 +131,7 @@ class LandingContentSeeder extends Seeder
         }
 
         Storage::disk('public')->put($to, File::get($source));
+        ImageOptimizer::generate($to);
 
         return $to;
     }
