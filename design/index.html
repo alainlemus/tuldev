@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codemida · Software a la medida en Tulancingo, Hidalgo</title>
+<meta name="description" content="Desarrollo de software a la medida: sistemas POS, apps móviles, tiendas en línea, sitios web y bases de datos. Más de 15 años de experiencia, desde Tulancingo, Hidalgo.">
+<link rel="icon" href="assets/brand/isotipo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#08090B}
+a{color:#1FBFA9}a:hover{color:#5FE0CC}
+input:focus,select:focus,textarea:focus{outline:2px solid #1FBFA9;outline-offset:1px;border-color:#1FBFA9}
+::placeholder{color:#6F7A85}
+@keyframes cm-drift{from{background-position:0 0}to{background-position:240px 120px}}
+@keyframes cm-glow{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+@keyframes cm-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes cm-grid-run{from{background-position:0 0}to{background-position:0 64px}}
+@keyframes cm-cell{0%,100%{opacity:0}45%,55%{opacity:1}}
+@keyframes cm-streak-x{from{transform:translateX(-240px)}to{transform:translateX(1700px)}}
+@keyframes cm-streak-y{from{transform:translateY(-240px)}to{transform:translateY(900px)}}
+@keyframes cm-t1{0%{width:0;animation-timing-function:steps(25,end)}12%{width:25ch}94%{width:25ch}100%{width:0}}
+@keyframes cm-t2{0%,16%{width:0;animation-timing-function:steps(33,end)}28%{width:33ch}94%{width:33ch}100%{width:0}}
+@keyframes cm-t3{0%,31%{width:0;animation-timing-function:steps(25,end)}41%{width:25ch}94%{width:25ch}100%{width:0}}
+@keyframes cm-t4{0%,44%{width:0;animation-timing-function:steps(32,end)}57%{width:32ch}94%{width:32ch}100%{width:0}}
+@keyframes cm-t5{0%,61%{width:0;animation-timing-function:steps(19,end)}69%{width:19ch}94%{width:19ch}100%{width:0}}
+@keyframes cm-scroll{0%,10%{background-position:50% 0%}45%,55%{background-position:50% 100%}90%,100%{background-position:50% 0%}}
+.cm-shot{background-size:100% auto;background-repeat:no-repeat;background-position:50% 0%;animation:cm-scroll 18s ease-in-out infinite}
+.cm-shot:hover{animation-play-state:paused}
+.cm-s-fideli{background-image:url(assets/portafolio/fideli-scroll.jpg)}
+.cm-s-farmacias{background-image:url(assets/portafolio/farmacias-scroll.jpg)}
+.cm-s-consultoria{background-image:url(assets/portafolio/consultoria-scroll.jpg)}
+.cm-s-starpubs{background-image:url(assets/portafolio/starpubs-scroll.jpg)}
+.cm-s-panybrasas{background-image:url(assets/portafolio/panybrasas-scroll.jpg)}
+.cm-s-pelana{background-image:url(assets/portafolio/pelana-scroll.jpg)}
+.cm-s-vrstudio{background-image:url(assets/portafolio/vrstudio-scroll.jpg)}
+.cm-s-litesa{background-image:url(assets/portafolio/litesa-scroll.jpg)}
+.cm-s-mundofit{background-image:url(assets/portafolio/mundofit-scroll.jpg)}
+.cm-track{animation:cm-marq 40s linear infinite}
+.cm-track.cm-rev{animation-direction:reverse}
+.cm-marquee:hover .cm-track{animation-play-state:paused}
+.cm-chip{transition:border-color .3s ease,background-color .3s ease,translate .3s cubic-bezier(.2,.8,.2,1)}
+.cm-chip:hover{border-color:#1FBFA9;background-color:#10201E;translate:0 -3px}
+@keyframes cm-marq{to{transform:translateX(-50%)}}
+.cm-card{transition:translate .5s cubic-bezier(.2,.8,.2,1),border-color .4s ease,box-shadow .5s ease}
+.cm-card:hover{translate:0 -6px;border-color:#2A6E66;box-shadow:0 24px 60px -24px rgba(31,191,169,.35)}
+.cm-proj .cm-frame{transition:translate .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease,border-color .4s ease}
+.cm-proj:hover .cm-frame{translate:0 -8px;border-color:#2A6E66;box-shadow:0 30px 70px -30px rgba(31,191,169,.45)}
+.cm-btn{transition:scale .35s cubic-bezier(.2,.8,.2,1),background-color .3s ease,box-shadow .35s ease}
+.cm-btn:hover{scale:1.04;box-shadow:0 10px 30px -10px rgba(31,191,169,.6)}
+.cm-btn:active{scale:.97}
+.cm-link{transition:color .25s ease}
+.cm-link:hover{color:#F1F4F6 !important}
+html{scroll-behavior:smooth}
+@keyframes cm-rise{from{opacity:0;transform:translateY(56px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes cm-rise-tilt{from{opacity:0;transform:perspective(1200px) translateY(90px) rotateX(16deg) scale(.92)}to{opacity:1;transform:none}}
+@keyframes cm-light{from{color:#2B333B}to{color:#F1F4F6}}
+@keyframes cm-light-accent{from{color:#21302E}to{color:#1FBFA9}}
+@keyframes cm-out{to{opacity:0;transform:scale(.9) translateY(-60px);filter:blur(8px)}}
+@keyframes cm-zoom{from{transform:scale(.86);opacity:.4}to{transform:none;opacity:1}}
+@supports (animation-timeline: view()){
+.cm-reveal{animation:cm-rise linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+.cm-proj{animation:cm-rise-tilt linear both;animation-timeline:view();animation-range:entry 0% cover 32%}
+.cm-word{animation:cm-light linear both;animation-timeline:view();animation-range:entry 100% cover 45%}
+.cm-word-a{animation:cm-light-accent linear both;animation-timeline:view();animation-range:entry 100% cover 45%}
+.cm-hero-out{animation:cm-out linear both;animation-timeline:scroll(root);animation-range:0 720px}
+.cm-zoom{animation:cm-zoom linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+}
+@media (prefers-reduced-motion: reduce){.cm-anim,.cm-shot,.cm-track,.cm-reveal,.cm-proj,.cm-word,.cm-word-a,.cm-hero-out,.cm-zoom{animation:none !important}html{scroll-behavior:auto}}
+</style>
+<style>
+/* Fondo del hero: <body data-hero-bg="puntos|perspectiva|pulsos"> (en Laravel sale de los ajustes de Filament) */
+.cm-bg{display:none}
+body[data-hero-bg="puntos"] .cm-bg[data-bg="puntos"],body[data-hero-bg="perspectiva"] .cm-bg[data-bg="perspectiva"],body[data-hero-bg="pulsos"] .cm-bg[data-bg="pulsos"]{display:block}
+.cm-bg{position:absolute;inset:0;pointer-events:none}
+/* Fallback para navegadores sin animation-timeline (Safari/Firefox): IntersectionObserver añade .is-in */
+@supports not (animation-timeline: view()){
+.js .cm-reveal,.js .cm-proj,.js .cm-zoom{opacity:0;transform:translateY(48px) scale(.97);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.js .cm-proj{transform:perspective(1200px) translateY(80px) rotateX(14deg) scale(.93)}
+.js .cm-reveal.is-in,.js .cm-proj.is-in,.js .cm-zoom.is-in{opacity:1;transform:none}
+.js .cm-word,.js .cm-word-a{transition:color .6s ease;color:#2B333B}
+.js .cm-word.is-in{color:#F1F4F6}.js .cm-word-a.is-in{color:#1FBFA9}
+}
+@media (prefers-reduced-motion: reduce){.js .cm-reveal,.js .cm-proj,.js .cm-zoom{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body data-hero-bg="puntos">
+<div style="min-height: 100vh; background: #08090B; color: #F1F4F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif">
+
+  <div style="position: sticky; top: 0; z-index: 50; background: rgba(8,9,11,0.72); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06)">
+    <header style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 12px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center">
+      <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #F1F4F6" aria-label="Codemida, inicio">
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><path d="M70 26 H38 Q24 26 24 40 V56 Q24 70 38 70 H70" stroke="#FFFFFF" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round"></path><rect x="60" y="40" width="16" height="16" rx="3" fill="#1FBFA9"></rect></svg>
+        <span style="font-size: 20px; font-weight: 800; letter-spacing: -0.03em">code<span style="color: #1FBFA9; font-weight: 500">&lt;</span>mida<span style="color: #1FBFA9; font-weight: 500">&gt;</span></span>
+      </a>
+      <nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 4px; align-items: center">
+        <a href="#servicios" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Servicios</a>
+        <a href="#portafolio" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Portafolio</a>
+        <a href="#apps" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Apps</a>
+        <a href="#contacto" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Contacto</a>
+        <a href="#contacto" class="cm-btn" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; margin-left: 6px; border-radius: 999px; background: #F1F4F6; color: #08090B; text-decoration: none; font-size: 14px; font-weight: 700">Cotiza tu proyecto</a>
+      </nav>
+    </header>
+  </div>
+
+
+  <section style="position: relative; overflow: hidden; min-height: 720px; display: flex; flex-direction: column">
+    <div class="cm-bg" data-bg="puntos">
+      <div aria-hidden="true" class="cm-anim" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(31,191,169,0.35) 1px, transparent 1.6px); background-size: 24px 24px; animation: cm-drift 40s linear infinite; mask-image: radial-gradient(ellipse 80% 75% at 60% 45%, #000 25%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 80% 75% at 60% 45%, #000 25%, transparent 80%)"></div>
+    </div>
+    <div class="cm-bg" data-bg="perspectiva">
+      <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; pointer-events: none">
+        <div class="cm-anim" style="position: absolute; left: -50%; right: -50%; bottom: -10%; height: 70%; transform: perspective(520px) rotateX(62deg); transform-origin: 50% 100%; background-image: linear-gradient(rgba(31,191,169,0.38) 1px, transparent 1px), linear-gradient(90deg, rgba(31,191,169,0.38) 1px, transparent 1px); background-size: 64px 64px; animation: cm-grid-run 1.6s linear infinite; mask-image: linear-gradient(to top, #000 10%, transparent 85%); -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%)"></div>
+      </div>
+    </div>
+    <div class="cm-bg" data-bg="pulsos">
+      <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden; background-image: linear-gradient(rgba(31,191,169,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(31,191,169,0.10) 1px, transparent 1px); background-size: 56px 56px">
+        <div class="cm-anim" style="position: absolute; left: 785px; top: 113px; width: 55px; height: 55px; background: rgba(31,191,169,0.22); animation: cm-cell 4s ease-in-out infinite"></div>
+        <div class="cm-anim" style="position: absolute; left: 1009px; top: 225px; width: 55px; height: 55px; background: rgba(31,191,169,0.30); animation: cm-cell 5s ease-in-out 1.2s infinite"></div>
+        <div class="cm-anim" style="position: absolute; left: 1177px; top: 505px; width: 55px; height: 55px; background: rgba(31,191,169,0.24); animation: cm-cell 4.5s ease-in-out 0.6s infinite"></div>
+        <div class="cm-anim" style="position: absolute; left: 0; top: 168px; width: 200px; height: 1px; background: linear-gradient(90deg, transparent, #1FBFA9, transparent); animation: cm-streak-x 6s linear infinite"></div>
+        <div class="cm-anim" style="position: absolute; left: 952px; top: 0; width: 1px; height: 200px; background: linear-gradient(180deg, transparent, #1FBFA9, transparent); animation: cm-streak-y 5s linear 1s infinite"></div>
+      </div>
+    </div>
+
+
+
+    <div class="cm-hero-out" style="position: relative; flex-grow: 1; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 72px 24px 112px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+      <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; color: #5FE0CC">{ software a la medida }</div>
+        <h1 style="margin: 0; font-size: clamp(40px, 5.4vw, 68px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; text-wrap: balance">Escribimos el software que tu negocio necesita.</h1>
+        <p style="margin: 0; max-width: 520px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; color: #B7C0C9">Sistemas POS, apps móviles, tiendas en línea y bases de datos, programados desde cero para cómo trabajas. Más de 15 años de experiencia, desde Tulancingo, Hidalgo.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+          <a href="#contacto" class="cm-btn" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; background: #1FBFA9; color: #06201C; text-decoration: none; font-size: 16px; font-weight: 700">Cotiza tu proyecto</a>
+          <a href="#portafolio" class="cm-btn" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid #2A333C; background: rgba(8,9,11,0.6); color: #F1F4F6; text-decoration: none; font-size: 16px; font-weight: 600">Ver proyectos</a>
+        </div>
+      </div>
+
+      <div style="position: relative; flex: 1 1 460px; min-width: 0">
+        <div aria-hidden="true" class="cm-anim" style="position: absolute; left: 10%; right: 10%; top: 10%; bottom: 10%; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,191,169,0.35), transparent); filter: blur(30px); animation: cm-glow 6s ease-in-out infinite"></div>
+        <figure role="img" aria-label="Terminal que muestra el proceso de un proyecto: analizar procesos, diseñar la base de datos, programar y entregar" style="position: relative; margin: 0; border-radius: 16px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-bottom: 1px solid #1C2329">
+            <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
+            <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
+            <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
+            <span style="margin-left: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">codemida — proyecto</span>
+          </div>
+          <div style="padding: 24px 22px 28px; display: flex; flex-direction: column; gap: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.5; min-height: 210px">
+            <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 25ch; color: #F1F4F6; animation: cm-t1 10s infinite">$ codemida nuevo-proyecto</span></div>
+            <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 33ch; color: #B7C0C9; animation: cm-t2 10s infinite"><span style="color: #1FBFA9">✓</span> analizando procesos del negocio</span></div>
+            <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 25ch; color: #B7C0C9; animation: cm-t3 10s infinite"><span style="color: #1FBFA9">✓</span> diseñando base de datos</span></div>
+            <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 32ch; color: #B7C0C9; animation: cm-t4 10s infinite"><span style="color: #1FBFA9">✓</span> programando POS + app + tienda</span></div>
+            <div style="display: flex; align-items: center; gap: 4px"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 19ch; color: #5FE0CC; animation: cm-t5 10s infinite">→ listo para vender</span><span class="cm-anim" style="display: inline-block; width: 9px; height: 17px; background: #1FBFA9; animation: cm-blink 1s steps(1) infinite"></span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Nuestra forma de trabajar" style="width: 100%; max-width: 1100px; margin: 0 auto; box-sizing: border-box; padding: 140px 24px 60px">
+    <p style="margin: 0; font-size: clamp(30px, 4.6vw, 60px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.12; text-wrap: balance"><span class="cm-word">Tu</span> <span class="cm-word">negocio</span> <span class="cm-word">no</span> <span class="cm-word">funciona</span> <span class="cm-word">como</span> <span class="cm-word">los</span> <span class="cm-word">demás.</span> <span class="cm-word">Por</span> <span class="cm-word">eso</span> <span class="cm-word">no</span> <span class="cm-word">usamos</span> <span class="cm-word">plantillas:</span> <span class="cm-word">escuchamos,</span> <span class="cm-word">diseñamos</span> <span class="cm-word">y</span> <span class="cm-word">programamos</span> <span class="cm-word">cada</span> <span class="cm-word">sistema</span> <span class="cm-word-a">alrededor</span> <span class="cm-word-a">de</span> <span class="cm-word-a">cómo</span> <span class="cm-word-a">trabajas</span> <span class="cm-word-a">tú.</span></p>
+  </section>
+
+  <section id="servicios" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 80px 24px 96px; display: flex; flex-direction: column; gap: 44px">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;servicios&gt;</div>
+      <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">Todo el software de tu negocio, con un solo equipo</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #B7C0C9">Desde el punto de venta hasta la app que usan tus clientes. Nada de plantillas: cada sistema se diseña a partir de cómo opera tu empresa.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+      <article class="cm-reveal cm-card" style="border-radius: 16px; border: 1px solid #1E252C; background: linear-gradient(180deg, #101418, #0B0E11); padding: 26px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">ventas/pos</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8M12 16v4M7 8h6M7 11h4"></path></svg></div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em">Sistemas POS</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B7C0C9">Punto de venta para tu tienda, restaurante o farmacia: ventas, inventario, cortes de caja y reportes en un solo sistema.</p>
+      </article>
+      <article class="cm-reveal cm-card" style="border-radius: 16px; border: 1px solid #1E252C; background: linear-gradient(180deg, #101418, #0B0E11); padding: 26px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">apps/movil</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><path d="M11 18h2"></path></svg></div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em">Apps móviles</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B7C0C9">Aplicaciones iOS y Android para tus clientes o tu equipo: pedidos, citas, tarjetas de lealtad, expedientes y trabajo en campo.</p>
+      </article>
+      <article class="cm-reveal cm-card" style="border-radius: 16px; border: 1px solid #1E252C; background: linear-gradient(180deg, #101418, #0B0E11); padding: 26px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">tienda/online</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h11L21 7H6.2"></path><circle cx="9" cy="19.5" r="1.5"></circle><circle cx="17" cy="19.5" r="1.5"></circle></svg></div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em">Tiendas en línea</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B7C0C9">Vende las 24 horas con catálogo, carrito, pagos con tarjeta y envíos, conectada a tu inventario real.</p>
+      </article>
+      <article class="cm-reveal cm-card" style="border-radius: 16px; border: 1px solid #1E252C; background: linear-gradient(180deg, #101418, #0B0E11); padding: 26px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">web/sitios</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path></svg></div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em">Sitios web administrables</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B7C0C9">Páginas rápidas y bien posicionadas en Google, con panel para que actualices tu menú, productos o promociones sin depender de nadie.</p>
+      </article>
+      <article class="cm-reveal cm-card" style="border-radius: 16px; border: 1px solid #1E252C; background: linear-gradient(180deg, #101418, #0B0E11); padding: 26px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">datos/sql</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"></ellipse><path d="M4 5.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6M4 11.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg></div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em">Bases de datos</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B7C0C9">Diseño, migración y optimización de bases de datos: tu información ordenada, respaldada y lista para consultar.</p>
+      </article>
+      <article class="cm-reveal cm-card" style="border-radius: 16px; border: 1px solid #1E252C; background: linear-gradient(180deg, #101418, #0B0E11); padding: 26px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">api/integraciones</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16"></path></svg></div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em">Sistemas a la medida e integraciones</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B7C0C9">Paneles administrativos, CRMs y conexiones con pagos, facturación, WhatsApp y Wallet para que todo hable entre sí.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="portafolio" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 40px 24px 96px; display: flex; flex-direction: column; gap: 44px">
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;portafolio&gt;</div>
+        <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">Proyectos reales, negocios reales</h2>
+      </div>
+      <p class="cm-reveal" style="margin: 0; max-width: 440px; font-size: 17px; line-height: 1.6; color: #B7C0C9">Restaurantes, farmacias, gimnasios, despachos e importadoras de Hidalgo que ya trabajan con software hecho por nosotros.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Fideli</span></div>
+          <div class="cm-shot cm-s-fideli" role="img" aria-label="Recorrido por el sitio de Fideli" style="aspect-ratio: 16 / 10; animation-duration: 20s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Fideli</h3><span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(31,191,169,0.14); color: #5FE0CC">Producto propio</span></div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Plataforma de lealtad: tarjetas de puntos en Apple y Google Wallet, campañas por WhatsApp y menú digital con pedidos pagados con tarjeta.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">SaaS · App iOS · Pagos en línea</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">far+macias</span></div>
+          <div class="cm-shot cm-s-farmacias" role="img" aria-label="Recorrido por la tienda en línea de far+macias" style="aspect-ratio: 16 / 10; animation-duration: 22s; animation-delay: -4s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">far+macias</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Cadena de farmacias: tienda en línea con catálogo y carrito, buscador de sucursales con mapa, monedero electrónico y app móvil.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Tienda en línea · App · Mapas</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Consultoría Inmobiliaria</span></div>
+          <div class="cm-shot cm-s-consultoria" role="img" aria-label="Recorrido por el sitio de Consultoría Inmobiliaria" style="aspect-ratio: 16 / 10; animation-duration: 21s; animation-delay: -9s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Consultoría Inmobiliaria</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Asesoría en créditos INFONAVIT y FOVISSSTE: sitio con servicios, propiedades y blog, más una app para asesores y clientes.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Blog · App iOS y Android</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Star Pubs</span></div>
+          <div class="cm-shot cm-s-starpubs" role="img" aria-label="Recorrido por el sitio de Star Pubs" style="aspect-ratio: 16 / 10; animation-duration: 17s; animation-delay: -2s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Star Pubs</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Restaurante y bar deportivo: agenda de eventos con filtros, menú, galería y reservaciones de mesa.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Eventos · Reservas</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Pan y Brasas</span></div>
+          <div class="cm-shot cm-s-panybrasas" role="img" aria-label="Recorrido por el sitio de Pan y Brasas" style="aspect-ratio: 16 / 10; animation-duration: 18s; animation-delay: -7s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Pan y Brasas</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Panadería artesanal: catálogo de productos y encargos en línea, con una identidad cálida que huele a horno de leña.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Catálogo · Encargos</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Pelaná</span></div>
+          <div class="cm-shot cm-s-pelana" role="img" aria-label="Recorrido por el sitio de Pelaná" style="aspect-ratio: 16 / 10; animation-duration: 16s; animation-delay: -11s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Pelaná</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Cocina yucateca de barrio: menú administrable, promociones de fin de semana y pedidos directos por WhatsApp.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Menú · WhatsApp</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">VR Studio Arquitectura</span></div>
+          <div class="cm-shot cm-s-vrstudio" role="img" aria-label="Recorrido por el sitio de VR Studio Arquitectura" style="aspect-ratio: 16 / 10; animation-duration: 20s; animation-delay: -5s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">VR Studio Arquitectura</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Despacho de arquitectura: servicios, obras realizadas y proceso de trabajo, del render a la obra terminada.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Portafolio de obras</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Grupo Litesa</span></div>
+          <div class="cm-shot cm-s-litesa" role="img" aria-label="Recorrido por el sitio de Grupo Litesa" style="aspect-ratio: 16 / 10; animation-duration: 19s; animation-delay: -13s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Grupo Litesa</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Importadora y distribuidora: catálogo de iluminación LED, servicios de importación y blog, con modo claro y oscuro.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Catálogo · Blog</div>
+        </div>
+      </article>
+
+      <article class="cm-proj" style="display: flex; flex-direction: column; gap: 16px">
+        <div class="cm-frame" style="border-radius: 14px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid #1C2329"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3A434C"></span><span style="margin-left: 8px; flex-grow: 1; height: 22px; border-radius: 6px; background: #161B20; display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: #8E99A4">Mundo Fit</span></div>
+          <div class="cm-shot cm-s-mundofit" role="img" aria-label="Recorrido por el sitio de Mundo Fit" style="aspect-ratio: 16 / 10; animation-duration: 14s; animation-delay: -3s"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Mundo Fit</h3><span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #1A2026; color: #B7C0C9">En desarrollo</span></div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Gimnasio con 4 sucursales en Tulancingo: planes, sucursales y nutrición, con inscripción directa por WhatsApp.</p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">Sitio web · Sucursales · Planes</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="apps" style="border-top: 1px solid #161B20; border-bottom: 1px solid #161B20; background: #0B0D10">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;apps&gt;</div>
+        <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">Apps que viven en el bolsillo de tus clientes y tu equipo</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px">
+        <article class="cm-reveal cm-card" style="border-radius: 18px; border: 1px solid #1E252C; background: #0F1317; overflow: hidden; display: flex; flex-direction: column">
+          <img src="assets/apps/fideli.jpg" alt="Pantallas de la app Fideli: tarjeta de lealtad en Wallet y registro de visitas del equipo" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block">
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between"><h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Fideli</h3><span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(31,191,169,0.14); color: #5FE0CC">Publicada en tiendas</span></div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">App para el equipo del negocio: escanea la tarjeta del cliente, registra visitas, suma puntos y canjea recompensas en segundos.</p>
+          </div>
+        </article>
+        <article class="cm-reveal cm-card" style="border-radius: 18px; border: 1px solid #1E252C; background: #0F1317; overflow: hidden; display: flex; flex-direction: column">
+          <img src="assets/apps/consultoria.jpg" alt="Pantallas de la app de Consultoría Inmobiliaria: acceso para asesores y para acreditados" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block">
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between"><h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Consultoría Inmobiliaria</h3><span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(31,191,169,0.14); color: #5FE0CC">Publicada en tiendas</span></div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">Una app, dos perfiles: los asesores gestionan expedientes, escanean INE con OCR y trabajan sin conexión; los clientes siguen su trámite y suben documentos.</p>
+          </div>
+        </article>
+        <article class="cm-reveal cm-card" style="border-radius: 18px; border: 1px solid #1E252C; background: #0F1317; overflow: hidden; display: flex; flex-direction: column">
+          <img src="assets/apps/farmacias.jpg" alt="Pantallas de la app de far+macias: tienda y tarjeta de puntos con saldo" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block">
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between"><h3 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">far+macias</h3><span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #1A2026; color: #B7C0C9">Próximamente en tiendas</span></div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #B7C0C9">La farmacia en el teléfono: receta con foto, pedidos con seguimiento, citas médicas, tarjeta de puntos con QR y facturación.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologias" style="padding: 112px 0 0; display: flex; flex-direction: column; gap: 44px">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+        <div class="cm-reveal" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;stack&gt;</div>
+        <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">Tecnologías con las que construimos</h2>
+      </div>
+      <p class="cm-reveal" style="margin: 0; max-width: 440px; font-size: 17px; line-height: 1.6; color: #B7C0C9">Herramientas probadas en producción, elegidas según lo que tu proyecto necesita: del servidor a la tienda de apps.</p>
+    </div>
+    <div class="cm-reveal" style="display: flex; flex-direction: column; gap: 14px; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)">
+        <div class="cm-marquee" style="overflow: hidden; padding: 4px 0">
+          <ul class="cm-track" style="margin: 0; padding: 0; list-style: none; display: flex; gap: 12px; width: max-content; animation-duration: 38s">
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/php.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">PHP</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/laravel.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Laravel</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/livewire.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Livewire</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/capas.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Filament</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/vuedotjs.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Vue</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/react.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">React</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/angular.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Angular</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/mysql.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">MySQL</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/postgresql.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">PostgreSQL</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/mongodb.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">MongoDB</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/php.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">PHP</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/laravel.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Laravel</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/livewire.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Livewire</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/capas.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Filament</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/vuedotjs.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Vue</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/react.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">React</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/angular.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Angular</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/mysql.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">MySQL</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/postgresql.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">PostgreSQL</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/mongodb.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">MongoDB</li>
+          </ul>
+        </div>
+        <div class="cm-marquee" style="overflow: hidden; padding: 4px 0">
+          <ul class="cm-track cm-rev" style="margin: 0; padding: 0; list-style: none; display: flex; gap: 12px; width: max-content; animation-duration: 52s">
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/react.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">React Native</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/expo.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Expo</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/appstore.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">App Store Connect</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/googleplay.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Google Play Console</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/servidor.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">VPS</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/docker.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Docker</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/cohete.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Dokploy</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/hostinger.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Hostinger</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/terminal.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">CLI</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/github.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">GitHub</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/stripe.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Stripe</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/factura.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Facturapi</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/resend.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Resend</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/whatsapp.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">WhatsApp</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/apple.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Apple Wallet</li>
+            <li class="cm-chip" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/wallet.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Google Wallet</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/react.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">React Native</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/expo.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Expo</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/appstore.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">App Store Connect</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/googleplay.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Google Play Console</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/servidor.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">VPS</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/docker.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Docker</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/cohete.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Dokploy</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/hostinger.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Hostinger</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/terminal.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">CLI</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/github.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">GitHub</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/stripe.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Stripe</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/factura.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Facturapi</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/resend.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Resend</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/whatsapp.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">WhatsApp</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/apple.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Apple Wallet</li>
+            <li class="cm-chip" aria-hidden="true" style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid #1E252C; background: #0E1215; white-space: nowrap; font-size: 15px; font-weight: 600; color: #D5DBE1"><img src="assets/logos/wallet.svg" alt="" width="22" height="22" style="width: 22px; height: 22px; display: block">Google Wallet</li>
+          </ul>
+        </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+    <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&gt; iniciar_proyecto()</div>
+      <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">Cuéntanos de tu negocio</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #B7C0C9">Déjanos tus datos y qué necesitas. Te contactamos para entender cómo trabajas y proponerte una solución, sin compromiso.</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
+        <a href="#" style="display: flex; align-items: center; gap: 12px; min-height: 44px; color: #F1F4F6; text-decoration: none; font-size: 16px; font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.6L4 20z"></path></svg>WhatsApp · [TU WHATSAPP]</a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; min-height: 44px; color: #F1F4F6; text-decoration: none; font-size: 16px; font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>[TU CORREO]</a>
+        <div style="display: flex; align-items: center; gap: 12px; min-height: 44px; color: #B7C0C9; font-size: 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Tulancingo, Hidalgo · proyectos en todo México</div>
+      </div>
+    </div>
+
+    <div class="cm-zoom" style="flex: 1 1 480px; min-width: 0; border-radius: 20px; border: 1px solid #232B33; background: #0E1215; padding: clamp(24px, 4vw, 40px)">
+      <div id="cm-ok" hidden>
+        <div role="status" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 24px 0">
+          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(31,191,169,0.14); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></div>
+          <h3 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em">¡Recibimos tu mensaje!</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B7C0C9">Te contactaremos pronto para platicar de tu proyecto.</p>
+          <button type="button" id="cm-reset" style="height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #2A333C; background: transparent; color: #F1F4F6; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Enviar otro mensaje</button>
+        </div>
+      </div>
+      <div id="cm-form-wrap">
+        <form id="cm-form" style="display: flex; flex-direction: column; gap: 18px">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cm-nombre" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Nombre</label>
+              <input id="cm-nombre" name="nombre" type="text" required autocomplete="name" placeholder="Tu nombre" style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cm-negocio" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Negocio o empresa</label>
+              <input id="cm-negocio" name="negocio" type="text" autocomplete="organization" placeholder="Nombre de tu negocio" style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cm-tel" style="font-size: 14px; font-weight: 600; color: #D5DBE1">WhatsApp</label>
+              <input id="cm-tel" name="whatsapp" type="tel" required autocomplete="tel" placeholder="10 dígitos" style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cm-correo" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Correo</label>
+              <input id="cm-correo" name="correo" type="email" autocomplete="email" placeholder="tu@correo.com" style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="cm-tipo" style="font-size: 14px; font-weight: 600; color: #D5DBE1">¿Qué necesitas?</label>
+            <select id="cm-tipo" name="tipo" required style="height: 48px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
+              <option value="">Elige una opción</option>
+              <option>Sistema POS</option>
+              <option>App móvil</option>
+              <option>Tienda en línea</option>
+              <option>Sitio web</option>
+              <option>Base de datos</option>
+              <option>Sistema a la medida o integración</option>
+              <option>Todavía no lo sé</option>
+            </select>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="cm-msg" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Cuéntanos tu proyecto</label>
+            <textarea id="cm-msg" name="mensaje" rows="4" placeholder="¿A qué se dedica tu negocio y qué te gustaría resolver?" style="padding: 12px 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px; line-height: 1.5; resize: vertical"></textarea>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between">
+            <span style="font-size: 13px; color: #8E99A4">Solo usamos tus datos para responderte.</span>
+            <button type="submit" class="cm-btn" style="height: 52px; padding: 0 28px; border-radius: 999px; border: 0; background: #1FBFA9; color: #06201C; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">Enviar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid #1A2026">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; font-size: 14px; color: #8E99A4">
+      <span style="font-weight: 800; letter-spacing: -0.03em; color: #F1F4F6">code<span style="color: #1FBFA9; font-weight: 500">&lt;</span>mida<span style="color: #1FBFA9; font-weight: 500">&gt;</span></span>
+      <span>Software a la medida · Tulancingo, Hidalgo · © 2026 Codemida</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  if(!CSS.supports('animation-timeline: view()')){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{threshold:0.15,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.cm-reveal,.cm-proj,.cm-zoom,.cm-word,.cm-word-a').forEach(function(el){io.observe(el)});
+  }
+  // Demo del formulario (en Laravel lo reemplaza el componente Livewire)
+  var f=document.getElementById('cm-form'),ok=document.getElementById('cm-ok'),wrap=document.getElementById('cm-form-wrap'),r=document.getElementById('cm-reset');
+  if(f){f.addEventListener('submit',function(e){e.preventDefault();wrap.hidden=true;ok.hidden=false;});}
+  if(r){r.addEventListener('click',function(){f.reset();ok.hidden=true;wrap.hidden=false;});}
+})();
+</script>
+</body>
+</html>
