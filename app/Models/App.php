@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Enums\AppStatus;
 use App\Models\Concerns\ClearsLandingCache;
 use App\Models\Concerns\OptimizesImages;
-use App\Support\ImageOptimizer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -41,10 +40,5 @@ class App extends Model
     public function imageUrl(): ?string
     {
         return $this->image ? Storage::disk('public')->url($this->image) : null;
-    }
-
-    public function webpUrl(): ?string
-    {
-        return ImageOptimizer::webpUrl($this->image);
     }
 }

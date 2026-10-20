@@ -131,8 +131,7 @@ class LandingContentSeeder extends Seeder
         }
 
         Storage::disk('public')->put($to, File::get($source));
-        ImageOptimizer::generate($to);
 
-        return $to;
+        return ImageOptimizer::convert($to);
     }
 }

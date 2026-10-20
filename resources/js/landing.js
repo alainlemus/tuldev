@@ -15,7 +15,7 @@ if (!CSS.supports('animation-timeline: view()')) {
     );
 
     document
-        .querySelectorAll('.cm-reveal,.cm-proj,.cm-zoom,.cm-word,.cm-word-a')
+        .querySelectorAll('.cm-reveal:not(.cm-scrub),.cm-proj:not(.cm-scrub),.cm-zoom:not(.cm-scrub),.cm-word,.cm-word-a')
         .forEach((el) => io.observe(el));
 }
 

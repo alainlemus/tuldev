@@ -6,29 +6,39 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageOptimizer
 {
-    private const QUALITY = 80;
+    private const QUALITY = 82;
 
-    /** Genera `<ruta>.webp` junto a la imagen original del disco público (JPG o PNG). */
-    public static function generate(?string $path): void
+    private const MAX_WIDTH = 1600;
+
+    public static function isConvertible(?string $path): bool
     {
-        if (! $path || ! function_exists('imagewebp')) {
-            return;
+        return $path !== null && preg_match('/\.(jpe?g|png)$/i', $path) === 1;
+    }
+
+    /**
+     * Convierte una imagen JPG/PNG del disco público a WebP, borra el original
+     * y devuelve la nueva ruta. Si no puede convertirla, devuelve la ruta original.
+     */
+    public static function convert(?string $path): ?string
+    {
+        if (! self::isConvertible($path) || ! function_exists('imagewebp')) {
+            return $path;
         }
 
         $disk = Storage::disk('public');
 
         if (! $disk->exists($path)) {
-            return;
+            return $path;
         }
 
-        $image = match (strtolower(pathinfo($path, PATHINFO_EXTENSION))) {
-            'jpg', 'jpeg' => @imagecreatefromstring($disk->get($path)),
-            'png' => @imagecreatefromstring($disk->get($path)),
-            default => false,
-        };
+        $image = @imagecreatefromstring($disk->get($path));
 
         if (! $image) {
-            return;
+            return $path;
+        }
+
+        if (imagesx($image) > self::MAX_WIDTH) {
+            $image = imagescale($image, self::MAX_WIDTH, -1, IMG_BICUBIC);
         }
 
         imagepalettetotruecolor($image);
@@ -39,23 +49,11 @@ class ImageOptimizer
         imagewebp($image, null, self::QUALITY);
         $webp = ob_get_clean();
 
-        $disk->put(self::webpPath($path), $webp);
-    }
+        $new = preg_replace('/\.(jpe?g|png)$/i', '.webp', $path);
 
-    public static function webpPath(string $path): string
-    {
-        return $path.'.webp';
-    }
+        $disk->put($new, $webp);
+        $disk->delete($path);
 
-    /** URL pública de la variante WebP si existe. */
-    public static function webpUrl(?string $path): ?string
-    {
-        if (! $path) {
-            return null;
-        }
-
-        $webp = self::webpPath($path);
-
-        return Storage::disk('public')->exists($webp) ? Storage::disk('public')->url($webp) : null;
+        return $new;
     }
 }

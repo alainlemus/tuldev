@@ -14,6 +14,8 @@ const pinWords = pin ? [...pin.querySelectorAll('.cm-word, .cm-word-a')] : [];
 const tracks = [...document.querySelectorAll('.cm-track')];
 const parallaxImages = reduceMotion ? [] : [...document.querySelectorAll('#apps img')];
 const visibleImages = new Set();
+const scrubTargets = reduceMotion ? [] : [...document.querySelectorAll('.cm-scrub')];
+const visibleScrub = new Set();
 
 parallaxImages.forEach((img) => img.classList.add('cm-par-img'));
 
@@ -22,6 +24,16 @@ const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => (entry.isIntersecting ? visibleImages.add(entry.target) : visibleImages.delete(entry.target)));
 });
 parallaxImages.forEach((img) => imageObserver.observe(img));
+
+// Elementos que aparecen "pegados" al scroll (portafolio, apps, formulario): solo se calculan los cercanos a la pantalla.
+const scrubObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => (entry.isIntersecting ? visibleScrub.add(entry.target) : visibleScrub.delete(entry.target)));
+        onScroll();
+    },
+    { rootMargin: '0px 0px 15% 0px' },
+);
+scrubTargets.forEach((el) => scrubObserver.observe(el));
 
 // Marquee: acelera según la velocidad del scroll y vuelve poco a poco a su ritmo.
 let lastY = scrollY;
@@ -62,6 +74,13 @@ function update(now) {
         section.style.setProperty('--svc-p', progress.toFixed(4));
         section.style.setProperty('--ct-p', progress.toFixed(4));
         section.style.setProperty('--pp', (progress * 2 - 1).toFixed(4));
+    });
+
+    visibleScrub.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const order = Number(el.style.getPropertyValue('--i')) || 0;
+        const linear = clamp((vh * 0.96 - rect.top) / (vh * 0.42) - order * 0.16);
+        el.style.setProperty('--rv', (linear * linear * (3 - 2 * linear)).toFixed(3));
     });
 
     visibleImages.forEach((img) => {

@@ -3,10 +3,10 @@
 namespace App\Models\Concerns;
 
 use App\Support\ImageOptimizer;
-use Illuminate\Support\Facades\Storage;
+use App\Support\LandingCache;
 
 /**
- * Genera una versión WebP de las imágenes que se suben desde Filament.
+ * Convierte a WebP las imágenes que se suben desde Filament y guarda la ruta nueva.
  * El modelo declara las columnas en `$webpColumns`.
  */
 trait OptimizesImages
@@ -14,20 +14,19 @@ trait OptimizesImages
     protected static function bootOptimizesImages(): void
     {
         static::saved(function ($model) {
+            $changed = [];
+
             foreach ($model->webpColumns ?? [] as $column) {
-                if ($model->wasRecentlyCreated || $model->wasChanged($column)) {
-                    ImageOptimizer::generate($model->{$column});
+                $path = $model->{$column};
+
+                if (ImageOptimizer::isConvertible($path)) {
+                    $changed[$column] = ImageOptimizer::convert($path);
                 }
             }
-        });
 
-        static::updated(function ($model) {
-            foreach ($model->webpColumns ?? [] as $column) {
-                $old = $model->getOriginal($column);
-
-                if ($model->wasChanged($column) && $old) {
-                    Storage::disk('public')->delete(ImageOptimizer::webpPath($old));
-                }
+            if ($changed && array_diff($changed, $model->only(array_keys($changed)))) {
+                $model->forceFill($changed)->saveQuietly();
+                LandingCache::forget();
             }
         });
     }

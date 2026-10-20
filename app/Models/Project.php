@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Concerns\ClearsLandingCache;
 use App\Models\Concerns\OptimizesImages;
-use App\Support\ImageOptimizer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -48,10 +47,5 @@ class Project extends Model
     public function isOwnProduct(): bool
     {
         return $this->badge === 'Producto propio';
-    }
-
-    public function webpUrl(): ?string
-    {
-        return ImageOptimizer::webpUrl($this->scroll_image);
     }
 }

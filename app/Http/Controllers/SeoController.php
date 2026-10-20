@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\App;
+use App\Models\Project;
+use App\Models\Service;
+use App\Models\Technology;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 
 class SeoController extends Controller
 {
@@ -17,9 +22,20 @@ class SeoController extends Controller
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n"
             .'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n"
-            .'  <url><loc>'.e(url('/')).'</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>'."\n"
+            .'  <url><loc>'.e(url('/')).'</loc><lastmod>'.$this->lastModified()->toAtomString().'</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>'."\n"
             .'</urlset>'."\n";
 
         return response($xml, 200, ['Content-Type' => 'application/xml; charset=UTF-8']);
+    }
+
+    /** Fecha del último cambio de contenido público, para el <lastmod> del sitemap. */
+    private function lastModified(): Carbon
+    {
+        $dates = collect([Service::class, Project::class, App::class, Technology::class])
+            ->map(fn (string $model) => $model::max('updated_at'))
+            ->filter()
+            ->map(fn ($date) => Carbon::parse($date));
+
+        return $dates->max() ?? now();
     }
 }

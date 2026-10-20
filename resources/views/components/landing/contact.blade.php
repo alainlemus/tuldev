@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="cm-zoom" style="flex: 1 1 480px; min-width: 0; border-radius: 20px; border: 1px solid #232B33; background: #0E1215; padding: clamp(24px, 4vw, 40px)">
+    <div class="cm-zoom cm-scrub" style="flex: 1 1 480px; min-width: 0; border-radius: 20px; border: 1px solid #232B33; background: #0E1215; padding: clamp(24px, 4vw, 40px)">
       <livewire:contact-form />
     </div>
   </section>

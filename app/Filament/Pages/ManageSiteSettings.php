@@ -67,7 +67,11 @@ class ManageSiteSettings extends SettingsPage
                 Tab::make('SEO')->schema([
                     TextInput::make('seo_title')->label('Título')->required()->maxLength(70),
                     Textarea::make('seo_description')->label('Descripción')->rows(3)->required()->maxLength(180),
-                    FileUpload::make('seo_image')->label('Imagen para compartir (Open Graph)')->image()->disk('public')->directory('seo')->visibility('public'),
+                    FileUpload::make('seo_image')
+                        ->label('Imagen para compartir (Open Graph)')
+                        ->helperText('JPG o PNG de 1200×630 px. Si la dejas vacía se usa la imagen de Codemida por defecto. No uses WebP: WhatsApp, LinkedIn y otras redes no lo leen bien.')
+                        ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                        ->image()->disk('public')->directory('seo')->visibility('public'),
                     Section::make('Redes sociales')->columns(2)->schema([
                         TextInput::make('social_facebook')->label('Facebook')->url(),
                         TextInput::make('social_instagram')->label('Instagram')->url(),

@@ -7,10 +7,9 @@
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px">
         @foreach ($apps as $app)
-        <article class="cm-reveal cm-card" style="border-radius: 18px; border: 1px solid #1E252C; background: #0F1317; overflow: hidden; display: flex; flex-direction: column">
+        <article class="cm-reveal cm-card cm-scrub" style="border-radius: 18px; border: 1px solid #1E252C; background: #0F1317; overflow: hidden; display: flex; flex-direction: column">
           <div style="overflow: hidden; aspect-ratio: 4 / 3; flex: none">
           <picture style="display: block; width: 100%; height: 100%">
-            @if ($app->webpUrl())<source srcset="{{ $app->webpUrl() }}" type="image/webp">@endif
             <img src="{{ $app->imageUrl() }}" alt="{{ $app->image_alt ?: 'Pantallas de la app '.$app->name }}" width="580" height="435" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block">
           </picture>
           </div>
