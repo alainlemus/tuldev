@@ -42,6 +42,7 @@ class SiteSettings extends Settings
     public string $cta_secondary_label;
 
     public ?string $contact_whatsapp;
+    public string $contact_whatsapp_message;
     public ?string $contact_email;
     public string $contact_area;
     public ?string $lead_notification_email;

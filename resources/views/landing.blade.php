@@ -15,4 +15,5 @@
         <x-landing.contact :s="$s" />
     </main>
     <x-landing.footer :s="$s" />
+    <x-landing.whatsapp-float :s="$s" />
 </x-layouts.landing>

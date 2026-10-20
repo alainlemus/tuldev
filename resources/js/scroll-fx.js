@@ -5,6 +5,7 @@ const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const clamp = (n, min = 0, max = 1) => Math.min(max, Math.max(min, n));
 
 const nav = document.querySelector('.cm-nav');
+const whatsapp = document.querySelector('.cm-wa');
 const services = document.querySelector('#servicios');
 const portfolio = document.querySelector('#portafolio');
 const contact = document.querySelector('#contacto');
@@ -49,6 +50,7 @@ function update(now) {
 
     root.style.setProperty('--scroll-p', max > 0 ? clamp(y / max).toFixed(4) : 0);
     nav?.classList.toggle('is-scrolled', y > 8);
+    whatsapp?.classList.toggle('is-visible', y > 240);
 
     // Transición entre el fondo del hero y el fondo de cuadrícula del resto de la página.
     root.style.setProperty('--hero-fade', hero ? clamp(y / Math.max(hero.offsetHeight, 1)).toFixed(4) : 1);

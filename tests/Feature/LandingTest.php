@@ -61,3 +61,16 @@ it('oculta los enlaces de contacto vacíos y genera el de WhatsApp cuando existe
 
     $this->get('/')->assertSee('https://wa.me/527751234567', false);
 });
+
+it('muestra el botón flotante de WhatsApp solo si hay número configurado', function () {
+    $this->get('/')->assertDontSee('cm-wa');
+
+    $settings = app(SiteSettings::class);
+    $settings->contact_whatsapp = '7751234567';
+    $settings->contact_whatsapp_message = 'Hola, quiero cotizar';
+    $settings->save();
+
+    $this->get('/')
+        ->assertSee('class="cm-wa"', false)
+        ->assertSee('https://wa.me/527751234567?text=Hola%2C%20quiero%20cotizar', false);
+});

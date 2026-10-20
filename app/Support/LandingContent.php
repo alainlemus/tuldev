@@ -30,6 +30,7 @@ class LandingContent
                 's' => (object) [
                     ...$settings->toArray(),
                     'whatsapp_url' => $settings->whatsappUrl(),
+                    'whatsapp_float_url' => $settings->whatsappUrl($settings->contact_whatsapp_message),
                 ],
                 'services' => Service::visible()->get(),
                 'projects' => Project::visible()->get(),

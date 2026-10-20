@@ -231,3 +231,20 @@ section[id]{scroll-margin-top:64px}
 .cm-cta-glow{position:absolute;left:50%;top:50%;width:min(900px,120%);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
   background:radial-gradient(closest-side,rgba(31,191,169,.22),transparent);filter:blur(10px);opacity:calc(.4 + var(--svc-p,0)*.6)}
 @media (prefers-reduced-motion: reduce){.cm-faq[open] .cm-faq-answer{animation:none}.cm-proc::after{transform:none}}
+
+/* Botón flotante de WhatsApp con halo pulsante */
+.cm-wa{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:55;width:60px;height:60px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 12px 30px -8px rgba(37,211,102,.55);
+  transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease}
+.cm-wa::before,.cm-wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(37,211,102,.4);pointer-events:none;animation:cm-wa-pulse 2.4s ease-out infinite}
+.cm-wa::after{animation-delay:1.2s}
+@keyframes cm-wa-pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}
+.cm-wa:hover{transform:scale(1.08);box-shadow:0 16px 38px -8px rgba(37,211,102,.7)}
+.cm-wa:active{transform:scale(.96)}
+.cm-wa:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cm-wa-label{position:absolute;right:72px;top:50%;translate:8px -50%;white-space:nowrap;padding:8px 14px;border-radius:999px;background:#F1F4F6;color:#08090B;font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .25s ease,translate .3s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){.cm-wa:hover .cm-wa-label{opacity:1;translate:0 -50%}}
+.js .cm-wa{opacity:0;transform:scale(.5);pointer-events:none}
+.js .cm-wa.is-visible{opacity:1;transform:none;pointer-events:auto}
+.js .cm-wa.is-visible:hover{transform:scale(1.08)}
+@media (prefers-reduced-motion: reduce){.cm-wa::before,.cm-wa::after{animation:none;display:none}.js .cm-wa{transition:none}}

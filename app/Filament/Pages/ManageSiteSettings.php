@@ -72,6 +72,7 @@ class ManageSiteSettings extends SettingsPage
                 Tab::make('Contacto')->columns(2)->schema([
                     TextInput::make('contact_whatsapp')->label('WhatsApp')->tel()->helperText('10 dígitos; los botones generan el enlace wa.me/52…'),
                     TextInput::make('contact_email')->label('Correo de contacto')->email(),
+                    TextInput::make('contact_whatsapp_message')->label('Mensaje inicial del botón flotante de WhatsApp')->required()->maxLength(200)->columnSpanFull(),
                     TextInput::make('contact_area')->label('Ciudad / zona de cobertura')->required(),
                     TextInput::make('lead_notification_email')->label('Correo que recibe los leads')->email(),
                     TextInput::make('business_phone')->label('Teléfono (datos estructurados)')->tel(),
