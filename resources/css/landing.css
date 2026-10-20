@@ -113,7 +113,7 @@ section[id]{scroll-margin-top:72px}
 .cm-proj .cm-frame{transition:translate .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease,border-color .4s ease,transform .25s ease-out;transform:perspective(900px) rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg))}
 
 /* Apps: la imagen se desplaza dentro de la tarjeta (parallax) */
-.js .cm-par-img{transform:translate3d(0,calc(var(--p,0)*-14px),0) scale(1.12);will-change:transform}
+.js .cm-par-img{transform:translate3d(0,calc(var(--p,0)*-7px),0) scale(1.05);will-change:transform}
 
 /* Botones magnéticos */
 .cm-btn{transition:scale .35s cubic-bezier(.2,.8,.2,1),translate .25s ease-out,background-color .3s ease,box-shadow .35s ease;translate:var(--tx,0) var(--ty,0)}
