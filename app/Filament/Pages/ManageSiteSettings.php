@@ -76,7 +76,9 @@ class ManageSiteSettings extends SettingsPage
                     TextInput::make('contact_area')->label('Ciudad / zona de cobertura')->required(),
                     TextInput::make('lead_notification_email')->label('Correo que recibe los leads')->email(),
                     TextInput::make('business_phone')->label('Teléfono (datos estructurados)')->tel(),
-                    TextInput::make('business_address')->label('Dirección (datos estructurados)'),
+                    TextInput::make('business_address')->label('Domicilio del negocio')->helperText('Se usa en el aviso de privacidad, en los términos y en los datos estructurados para buscadores.'),
+                    TextInput::make('legal_name')->label('Nombre o razón social del responsable')->helperText('Persona física o moral que figura en el aviso de privacidad y en los términos.'),
+                    TextInput::make('privacy_email')->label('Correo para derechos ARCO (privacidad)')->email()->helperText('Si lo dejas vacío se usa el correo de contacto.'),
                 ]),
                 Tab::make('SEO')->schema([
                     TextInput::make('seo_title')->label('Título')->required()->maxLength(70),

@@ -4,6 +4,7 @@ namespace App\Support;
 
 use App\Models\App;
 use App\Models\Faq;
+use App\Models\LegalPage;
 use App\Models\ProcessStep;
 use App\Models\Project;
 use App\Models\Stat;
@@ -39,6 +40,7 @@ class LandingContent
                 'faqs' => Faq::visible()->get(),
                 'stats' => Stat::visible()->get(),
                 'testimonials' => Testimonial::visible()->get(),
+                'legalPages' => LegalPage::visible()->get(['id', 'slug', 'title']),
                 'techRows' => [
                     1 => $technologies->where('row', 1)->values(),
                     2 => $technologies->where('row', 2)->values(),

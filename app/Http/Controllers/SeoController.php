@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\App;
+use App\Models\LegalPage;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Technology;
@@ -23,6 +24,7 @@ class SeoController extends Controller
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n"
             .'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n"
             .'  <url><loc>'.e(url('/')).'</loc><lastmod>'.$this->lastModified()->toAtomString().'</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>'."\n"
+            .$this->legalUrls()
             .'</urlset>'."\n";
 
         return response($xml, 200, ['Content-Type' => 'application/xml; charset=UTF-8']);
@@ -37,5 +39,11 @@ class SeoController extends Controller
             ->map(fn ($date) => Carbon::parse($date));
 
         return $dates->max() ?? now();
+    }
+
+    private function legalUrls(): string
+    {
+        return LegalPage::visible()->get()->map(fn (LegalPage $page) => '  <url><loc>'.e(route('legal', $page->slug)).'</loc><lastmod>'
+            .$page->updated_at->toAtomString().'</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>'."\n")->implode('');
     }
 }

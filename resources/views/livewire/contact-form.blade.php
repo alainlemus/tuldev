@@ -54,7 +54,7 @@
       </div>
       @error('form')<div role="alert" style="font-size: 14px; color: #F08A8A">{{ $message }}</div>@enderror
       <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between">
-        <span style="font-size: 13px; color: #8E99A4">Solo usamos tus datos para responderte.</span>
+        <span style="font-size: 13px; line-height: 1.5; color: #8E99A4; max-width: 300px">Solo usamos tus datos para responderte. Al enviar aceptas nuestro <a href="{{ route('legal', \App\Models\LegalPage::PRIVACY) }}" target="_blank" rel="noopener" style="color: #5FE0CC">aviso de privacidad</a>.</span>
         <button type="submit" class="cm-btn" wire:loading.attr="disabled" style="height: 52px; padding: 0 28px; border-radius: 999px; border: 0; background: #1FBFA9; color: #06201C; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">Enviar mensaje</button>
       </div>
     </form>

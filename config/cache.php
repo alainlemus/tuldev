@@ -143,6 +143,7 @@ return [
         App\Models\Faq::class,
         App\Models\Stat::class,
         App\Models\Testimonial::class,
+        App\Models\LegalPage::class,
         App\Enums\ServiceIcon::class,
         App\Enums\AppStatus::class,
     ],

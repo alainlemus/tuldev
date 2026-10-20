@@ -46,6 +46,8 @@ class SiteSettings extends Settings
     public ?string $contact_email;
     public string $contact_area;
     public ?string $lead_notification_email;
+    public ?string $legal_name;
+    public ?string $privacy_email;
     public ?string $business_phone;
     public ?string $business_address;
 

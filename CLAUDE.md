@@ -22,6 +22,7 @@ Landing de Codemida ("software a la medida", Tulancingo, Hidalgo). El diseño ap
 - `app/Filament/` Resources, páginas y widgets · `app/Models/` · `app/Settings/` · `app/Livewire/` formulario de contacto.
 - `resources/views/components/landing/` un componente Blade por sección.
 - Secciones editables desde Filament: servicios, portafolio, apps, tecnologías, proceso, preguntas frecuentes, cifras y testimonios (las secciones sin contenido publicado no se muestran).
+- Páginas legales (`legal_pages`): aviso de privacidad y términos, editables en Filament; los marcadores {{responsable}}, {{domicilio}}, {{correo_privacidad}}, {{sitio}} y {{fecha}} se reemplazan con Ajustes. Son una base: debe revisarlas un abogado.
 - `public/brand/` logotipos e isotipo para el panel.
 
 ## Reglas

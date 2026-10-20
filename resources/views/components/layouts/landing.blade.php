@@ -1,6 +1,8 @@
-@props(['s', 'services', 'faqs' => null])
+@props(['s', 'services', 'faqs' => null, 'pageTitle' => null, 'pageDescription' => null, 'canonical' => null, 'structured' => true])
 @php
-    $siteUrl = url('/');
+    $siteUrl = $canonical ?? url('/');
+    $title = $pageTitle ?? $s->seo_title;
+    $description = $pageDescription ?? $s->seo_description;
     $hasCustomOg = filled($s->seo_image);
     $ogImage = $hasCustomOg ? url(Storage::disk('public')->url($s->seo_image)) : url('images/og-codemida.jpg');
     $ogAlt = 'Codemida: software a la medida en Tulancingo, Hidalgo';
@@ -14,8 +16,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{{ $s->seo_title }}</title>
-<meta name="description" content="{{ $s->seo_description }}">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Codemida">
 <meta name="theme-color" content="#08090B">
@@ -32,8 +34,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
 <meta property="og:site_name" content="Codemida">
-<meta property="og:title" content="{{ $s->seo_title }}">
-<meta property="og:description" content="{{ $s->seo_description }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ $siteUrl }}">
 <meta property="og:image" content="{{ $ogImage }}">
 <meta property="og:image:secure_url" content="{{ str_replace('http://', 'https://', $ogImage) }}">
@@ -44,14 +46,16 @@
 <meta property="og:image:height" content="630">
 @endunless
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ $s->seo_title }}">
-<meta name="twitter:description" content="{{ $s->seo_description }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:image" content="{{ $ogImage }}">
 <meta name="twitter:image:alt" content="{{ $ogAlt }}">
 @foreach ($fonts as $font)
 <link rel="preload" href="{{ Vite::asset($font) }}" as="font" type="font/woff2" crossorigin>
 @endforeach
+@if ($structured)
 <script type="application/ld+json">{!! json_encode(\App\Support\StructuredData::graph($s, $services, $ogImage, $faqs), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) !!}</script>
+@endif
 @vite(['resources/css/landing.css', 'resources/js/landing.js'])
 </head>
 <body data-hero-bg="{{ $s->hero_background }}">
