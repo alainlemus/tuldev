@@ -29,6 +29,18 @@ class SiteSettings extends Settings
     public string $contact_intro;
     public string $footer_text;
 
+    public string $stats_title;
+    public string $process_title;
+    public string $process_intro;
+    public string $testimonials_title;
+    public string $testimonials_intro;
+    public string $faq_title;
+    public string $faq_intro;
+    public string $cta_title;
+    public string $cta_text;
+    public string $cta_primary_label;
+    public string $cta_secondary_label;
+
     public ?string $contact_whatsapp;
     public ?string $contact_email;
     public string $contact_area;

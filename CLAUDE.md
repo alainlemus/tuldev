@@ -21,6 +21,7 @@ Landing de Codemida ("software a la medida", Tulancingo, Hidalgo). El diseño ap
 ## Estructura
 - `app/Filament/` Resources, páginas y widgets · `app/Models/` · `app/Settings/` · `app/Livewire/` formulario de contacto.
 - `resources/views/components/landing/` un componente Blade por sección.
+- Secciones editables desde Filament: servicios, portafolio, apps, tecnologías, proceso, preguntas frecuentes, cifras y testimonios (las secciones sin contenido publicado no se muestran).
 - `public/brand/` logotipos e isotipo para el panel.
 
 ## Reglas

@@ -202,3 +202,32 @@ html{overflow-x:clip}
 section[id]{scroll-margin-top:64px}
 }
 @media (max-width:640px){.cm-field input,.cm-field select,.cm-field textarea{font-size:16px!important}}
+
+/* ===== Secciones nuevas: cifras, proceso, testimonios, FAQ y llamada final ===== */
+.cm-stats .cm-stat+.cm-stat{border-left:1px solid #1C2329}
+@media (max-width:720px){.cm-stats .cm-stat+.cm-stat{border-left:0;border-top:1px solid #1C2329}}
+
+/* Proceso: línea de progreso que se llena con el scroll y números por paso */
+.cm-proc{position:relative;padding-top:30px!important}
+.cm-proc::before,.cm-proc::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px}
+.cm-proc::before{background:#1C2329}
+.cm-proc::after{background:linear-gradient(90deg,#1FBFA9,#5FE0CC);transform-origin:0 50%;transform:scaleX(clamp(0,calc(var(--svc-p,0)*2.2 - .55),1))}
+.cm-step-num{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;font-weight:600;color:#5FE0CC;letter-spacing:.04em}
+.cm-step-num::before{content:"";display:block;width:36px;height:2px;margin-bottom:14px;background:#1FBFA9;border-radius:2px;transition:width .5s ease}
+.cm-step:hover .cm-step-num::before{width:64px}
+
+/* FAQ */
+.cm-faq summary::-webkit-details-marker{display:none}
+.cm-faq{transition:border-color .3s ease,background-color .3s ease}
+.cm-faq:hover,.cm-faq[open]{border-color:#2A6E66}
+.cm-faq[open]{background:#10181A}
+.cm-faq-icon{flex:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cm-faq[open] .cm-faq-icon{transform:rotate(135deg)}
+.cm-faq[open] .cm-faq-answer{animation:cm-faq-in .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes cm-faq-in{from{opacity:0;transform:translateY(-8px)}}
+.cm-faq summary:focus-visible{outline:2px solid #1FBFA9;outline-offset:-2px;border-radius:14px}
+
+/* Llamada final */
+.cm-cta-glow{position:absolute;left:50%;top:50%;width:min(900px,120%);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(31,191,169,.22),transparent);filter:blur(10px);opacity:calc(.4 + var(--svc-p,0)*.6)}
+@media (prefers-reduced-motion: reduce){.cm-faq[open] .cm-faq-answer{animation:none}.cm-proc::after{transform:none}}

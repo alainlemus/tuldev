@@ -1,4 +1,4 @@
-@props(['s', 'services', 'lastModified' => null])
+@props(['s', 'services', 'faqs' => null])
 @php
     $siteUrl = url('/');
     $hasCustomOg = filled($s->seo_image);
@@ -51,7 +51,7 @@
 @foreach ($fonts as $font)
 <link rel="preload" href="{{ Vite::asset($font) }}" as="font" type="font/woff2" crossorigin>
 @endforeach
-<script type="application/ld+json">{!! json_encode(\App\Support\StructuredData::graph($s, $services, $ogImage), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) !!}</script>
+<script type="application/ld+json">{!! json_encode(\App\Support\StructuredData::graph($s, $services, $ogImage, $faqs), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) !!}</script>
 @vite(['resources/css/landing.css', 'resources/js/landing.js'])
 </head>
 <body data-hero-bg="{{ $s->hero_background }}">

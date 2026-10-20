@@ -5,7 +5,10 @@ namespace Database\Seeders;
 use App\Enums\AppStatus;
 use App\Enums\ServiceIcon;
 use App\Models\App;
+use App\Models\Faq;
+use App\Models\ProcessStep;
 use App\Models\Project;
+use App\Models\Stat;
 use App\Models\Service;
 use App\Models\Technology;
 use App\Support\ImageOptimizer;
@@ -22,6 +25,9 @@ class LandingContentSeeder extends Seeder
         $this->projects();
         $this->apps();
         $this->technologies();
+        $this->processSteps();
+        $this->faqs();
+        $this->stats();
     }
 
     private function services(): void
@@ -118,6 +124,49 @@ class LandingContentSeeder extends Seeder
                 'sort' => $i + 1,
                 'is_active' => true,
             ]);
+        }
+    }
+
+    private function processSteps(): void
+    {
+        $steps = [
+            ['Escuchamos', 'Platicamos contigo para entender cómo opera tu negocio, qué te quita tiempo y qué quieres lograr.'],
+            ['Diseñamos', 'Definimos los procesos y diseñamos la base de datos y las pantallas antes de escribir código.'],
+            ['Programamos', 'Construimos tu sistema desde cero, ya sea POS, app, tienda o sitio, y lo revisamos contigo mientras avanza.'],
+            ['Entregamos', 'Lo ponemos en marcha en tu negocio, lo conectamos a tus herramientas y te mostramos cómo usarlo.'],
+        ];
+
+        foreach ($steps as $i => [$title, $description]) {
+            ProcessStep::updateOrCreate(['title' => $title], ['description' => $description, 'sort' => $i + 1, 'is_active' => true]);
+        }
+    }
+
+    private function faqs(): void
+    {
+        $faqs = [
+            ['¿Usan plantillas?', 'No. Cada sistema se diseña y se programa desde cero alrededor de cómo opera tu negocio.'],
+            ['¿Qué tipo de proyectos desarrollan?', 'Sistemas POS, apps móviles para iOS y Android, tiendas en línea, sitios web administrables, bases de datos y sistemas a la medida con integraciones de pagos, facturación, WhatsApp y Wallet.'],
+            ['¿Solo trabajan en Tulancingo?', 'Estamos en Tulancingo, Hidalgo, y desarrollamos proyectos para negocios de todo México.'],
+            ['¿Cómo empiezo?', 'Déjanos tus datos en el formulario o escríbenos por WhatsApp. Te contactamos para entender cómo trabajas y proponerte una solución, sin compromiso.'],
+            ['¿Puedo actualizar yo mismo el contenido de mi sitio?', 'Sí. Los sitios incluyen un panel para que actualices tu menú, tus productos o tus promociones sin depender de nadie.'],
+        ];
+
+        foreach ($faqs as $i => [$question, $answer]) {
+            Faq::updateOrCreate(['question' => $question], ['answer' => $answer, 'sort' => $i + 1, 'is_published' => true]);
+        }
+    }
+
+    /** Cifras verificables con el contenido actual; edítalas desde el panel cuando cambien. */
+    private function stats(): void
+    {
+        $stats = [
+            ['15+', 'años de experiencia'],
+            ['9', 'proyectos en nuestro portafolio'],
+            ['2', 'apps publicadas en tiendas'],
+        ];
+
+        foreach ($stats as $i => [$value, $label]) {
+            Stat::updateOrCreate(['label' => $label], ['value' => $value, 'sort' => $i + 1, 'is_published' => true]);
         }
     }
 

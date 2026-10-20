@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 class StructuredData
 {
     /** Grafo JSON-LD: sitio web + ProfessionalService. Omite los datos que aún no se capturan en Ajustes. */
-    public static function graph(object $s, Collection $services, string $image): array
+    public static function graph(object $s, Collection $services, string $image, ?Collection $faqs = null): array
     {
         $site = url('/');
 
@@ -58,6 +58,20 @@ class StructuredData
             'publisher' => ['@id' => $site.'#organization'],
         ];
 
-        return ['@context' => 'https://schema.org', '@graph' => [$business, $website]];
+        $graph = [$business, $website];
+
+        if ($faqs?->isNotEmpty()) {
+            $graph[] = [
+                '@type' => 'FAQPage',
+                '@id' => $site.'#faq',
+                'mainEntity' => $faqs->map(fn ($faq) => [
+                    '@type' => 'Question',
+                    'name' => $faq->question,
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq->answer],
+                ])->values()->all(),
+            ];
+        }
+
+        return ['@context' => 'https://schema.org', '@graph' => $graph];
     }
 }

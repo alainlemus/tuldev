@@ -8,6 +8,8 @@ const nav = document.querySelector('.cm-nav');
 const services = document.querySelector('#servicios');
 const portfolio = document.querySelector('#portafolio');
 const contact = document.querySelector('#contacto');
+const process = document.querySelector('#proceso');
+const cta = document.querySelector('#hablemos');
 const hero = document.querySelector('.cm-par')?.closest('section');
 const pin = document.querySelector('.cm-pin');
 const pinWords = pin ? [...pin.querySelectorAll('.cm-word, .cm-word-a')] : [];
@@ -67,7 +69,7 @@ function update(now) {
         });
     }
 
-    [services, portfolio, contact].forEach((section) => {
+    [services, portfolio, contact, process, cta].forEach((section) => {
         if (!section) return;
         const rect = section.getBoundingClientRect();
         const progress = clamp((vh - rect.top) / (vh + rect.height));
@@ -242,4 +244,40 @@ if (!reduceMotion && finePointer) {
     );
 
     document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
+}
+
+// Cifras: cuentan desde 0 hasta su valor la primera vez que aparecen.
+const counters = [...document.querySelectorAll('[data-count]')];
+
+if (counters.length && !reduceMotion) {
+    const countObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                countObserver.unobserve(entry.target);
+
+                const el = entry.target;
+                const target = parseFloat(el.dataset.count);
+                const decimals = (el.dataset.count.split('.')[1] || '').length;
+                const { prefix = '', suffix = '' } = el.dataset;
+                const start = performance.now();
+                const duration = 1600;
+
+                const tick = (now) => {
+                    const t = clamp((now - start) / duration);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    el.textContent = `${prefix}${(target * eased).toFixed(decimals)}${suffix}`;
+                    if (t < 1) requestAnimationFrame(tick);
+                };
+
+                requestAnimationFrame(tick);
+            });
+        },
+        { threshold: 0.6 },
+    );
+
+    counters.forEach((el) => {
+        el.textContent = `${el.dataset.prefix ?? ''}0${el.dataset.suffix ?? ''}`;
+        countObserver.observe(el);
+    });
 }
