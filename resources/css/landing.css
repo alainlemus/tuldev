@@ -168,7 +168,9 @@ html{overflow-x:clip}
 @media (prefers-reduced-motion: reduce){.cm-cursor-glow{display:none}}
 
 /* Fondo único para toda la página: rejilla tenue y resplandores que se desplazan con el scroll (--scroll-p) */
-.cm-bg-global{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#08090B}
+.cm-bg-global{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#08090B;
+  /* invisible sobre el hero (que trae su propio fondo) y aparece gradualmente al salir de él */
+  opacity:clamp(0,calc((var(--hero-fade,1) - .35)*2.4),1)}
 .cm-bg-global::before{content:"";position:absolute;inset:-120px 0;
   background-image:linear-gradient(rgba(31,191,169,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(31,191,169,.055) 1px,transparent 1px);background-size:64px 64px;
   background-position:0 calc(var(--scroll-p,0)*-1400px);

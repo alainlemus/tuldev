@@ -36,6 +36,9 @@ function update(now) {
     root.style.setProperty('--scroll-p', max > 0 ? clamp(y / max).toFixed(4) : 0);
     nav?.classList.toggle('is-scrolled', y > 8);
 
+    // Transición entre el fondo del hero y el fondo de cuadrícula del resto de la página.
+    root.style.setProperty('--hero-fade', hero ? clamp(y / Math.max(hero.offsetHeight, 1)).toFixed(4) : 1);
+
     if (reduceMotion) return;
 
     if (hero) {
