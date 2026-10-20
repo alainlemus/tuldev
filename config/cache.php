@@ -131,6 +131,16 @@ return [
     |
     */
 
-    'serializable_classes' => false,
+    'serializable_classes' => [
+        stdClass::class,
+        Illuminate\Support\Collection::class,
+        Illuminate\Database\Eloquent\Collection::class,
+        App\Models\Service::class,
+        App\Models\Project::class,
+        App\Models\App::class,
+        App\Models\Technology::class,
+        App\Enums\ServiceIcon::class,
+        App\Enums\AppStatus::class,
+    ],
 
 ];
