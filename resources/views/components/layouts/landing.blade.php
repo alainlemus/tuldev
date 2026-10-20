@@ -27,7 +27,8 @@
 @vite(['resources/css/landing.css', 'resources/js/landing.js'])
 </head>
 <body data-hero-bg="{{ $s->hero_background }}">
-<div style="min-height: 100vh; background: #08090B; color: #F1F4F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif">
+<div class="cm-bg-global" aria-hidden="true"></div>
+<div style="min-height: 100vh; color: #F1F4F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif">
 {{ $slot }}
 </div>
 </body>

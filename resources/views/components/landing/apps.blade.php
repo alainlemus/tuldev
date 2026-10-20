@@ -1,5 +1,5 @@
 @props(['s', 'apps'])
-  <section id="apps" style="border-top: 1px solid #161B20; border-bottom: 1px solid #161B20; background: #0B0D10">
+  <section id="apps" style="border-top: 1px solid #161B20; border-bottom: 1px solid #161B20; background: rgba(11,13,16,0.6)">
     <div style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
       <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
         <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;apps&gt;</div>

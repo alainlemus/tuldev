@@ -5,14 +5,6 @@
 @endphp
   <section aria-label="Nuestra forma de trabajar" class="cm-pin">
    <div class="cm-pin-stick">
-    <div class="cm-code" aria-hidden="true">
-      <span class="cm-aurora cm-aurora-a"></span>
-      <span class="cm-aurora cm-aurora-b"></span>
-      @foreach (range(0, 4) as $ring)
-      <span class="cm-ring" style="--r: {{ $ring }}"></span>
-      @endforeach
-      <span class="cm-ring cm-ring-dash"></span>
-    </div>
     <div style="position: relative; z-index: 1; width: 100%; max-width: 1100px; margin: 0 auto; box-sizing: border-box; padding: 140px 24px 60px">
     <p style="margin: 0; font-size: clamp(30px, 4.6vw, 60px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.12; text-wrap: balance">@foreach ($words as [$word, $class])<span class="{{ $class }}">{{ $word }}</span>{{ $loop->last ? '' : ' ' }}@endforeach</p>
     </div>

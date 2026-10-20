@@ -129,36 +129,15 @@ section[id]{scroll-margin-top:72px}
 .cm-card::after{display:none}
 }
 
-/* Fondo de la frase fija: aurora y anillos que se expanden y giran con el scroll (--pin-p lo escribe scroll-fx.js) */
-.cm-code{display:none}
 .js .cm-pin-stick{overflow:hidden}
-.js .cm-code{display:block;position:absolute;inset:0;padding:0!important;pointer-events:none}
-.cm-aurora{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
-.cm-aurora-a{width:60vmax;height:60vmax;left:50%;top:50%;margin:-30vmax 0 0 -30vmax;background:radial-gradient(closest-side,rgba(31,191,169,.22),transparent);
-  transform:translate3d(calc(-32vw + var(--pin-p,0)*64vw),calc(-14vh + var(--pin-p,0)*28vh),0) scale(calc(.8 + var(--pin-p,0)*.5))}
-.cm-aurora-b{width:48vmax;height:48vmax;left:50%;top:50%;margin:-24vmax 0 0 -24vmax;background:radial-gradient(closest-side,rgba(60,110,255,.16),transparent);
-  transform:translate3d(calc(30vw - var(--pin-p,0)*60vw),calc(16vh - var(--pin-p,0)*30vh),0) scale(calc(1.2 - var(--pin-p,0)*.4))}
-.cm-ring{position:absolute;left:50%;top:50%;width:min(70vmin,720px);height:min(70vmin,720px);margin:calc(min(70vmin,720px)/-2) 0 0 calc(min(70vmin,720px)/-2);border-radius:50%;
-  border:1px solid rgba(95,224,204,.14);opacity:calc(.9 - var(--r,0)*.16);will-change:transform;
-  transform:scale(calc(.35 + var(--pin-p,0)*1.5 + var(--r,0)*.38))}
-.cm-ring-dash{border:1px dashed rgba(31,191,169,.3);opacity:.7;transform:scale(1.15) rotate(calc(var(--pin-p,0)*240deg))}
-@media (prefers-reduced-motion: reduce){.cm-aurora,.cm-ring{transform:none!important}.cm-ring{display:none}}
 
 /* Servicios: rejilla con resplandor que se desplaza con el scroll (--svc-p) e íconos que se dibujan al entrar */
 html{overflow-x:clip}
 #servicios{position:relative;isolation:isolate}
-.cm-bgfx{position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;z-index:-1;pointer-events:none;
-  -webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent)}
-.cm-bgfx::before{content:"";position:absolute;inset:-160px 0;background-image:linear-gradient(rgba(31,191,169,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,191,169,.07) 1px,transparent 1px);background-size:56px 56px;
-  background-position:0 calc(var(--svc-p,0)*-160px);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 30%,transparent 80%)}
-.cm-bgfx::after{content:"";position:absolute;width:640px;height:640px;left:50%;top:50%;margin:-320px 0 0 -320px;border-radius:50%;background:radial-gradient(closest-side,rgba(31,191,169,.16),transparent);filter:blur(20px);
-  transform:translate3d(calc(-45vw + var(--svc-p,0)*90vw),calc(-18% + var(--svc-p,0)*36%),0);will-change:transform}
 .js #servicios .cm-card svg :is(path,rect,circle,ellipse){stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*120ms + .3s)}
 .js #servicios .cm-card.is-drawn svg :is(path,rect,circle,ellipse){stroke-dashoffset:0}
 @media (prefers-reduced-motion: reduce){
 .js #servicios .cm-card svg :is(path,rect,circle,ellipse){stroke-dashoffset:0;transition:none}
-.cm-bgfx::before{background-position:0 0}
-.cm-bgfx::after{transform:translate(-50%,-50%)}
 }
 
 /* Portafolio y contacto reutilizan el fondo de rejilla con resplandor de Servicios */
@@ -187,3 +166,14 @@ html{overflow-x:clip}
   background:radial-gradient(closest-side,rgba(31,191,169,.17),rgba(31,191,169,.06) 48%,transparent);transition:opacity .5s ease}
 .cm-cursor-glow.is-on{opacity:1}
 @media (prefers-reduced-motion: reduce){.cm-cursor-glow{display:none}}
+
+/* Fondo único para toda la página: rejilla tenue y resplandores que se desplazan con el scroll (--scroll-p) */
+.cm-bg-global{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#08090B}
+.cm-bg-global::before{content:"";position:absolute;inset:-120px 0;
+  background-image:linear-gradient(rgba(31,191,169,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(31,191,169,.055) 1px,transparent 1px);background-size:64px 64px;
+  background-position:0 calc(var(--scroll-p,0)*-1400px);
+  -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 45%,#000 35%,transparent 90%);mask-image:radial-gradient(ellipse 85% 75% at 50% 45%,#000 35%,transparent 90%)}
+.cm-bg-global::after{content:"";position:absolute;width:70vmax;height:70vmax;left:50%;top:50%;margin:-35vmax 0 0 -35vmax;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(31,191,169,.13),transparent);filter:blur(30px);will-change:transform;
+  transform:translate3d(calc(-30vw + var(--scroll-p,0)*60vw),calc(-22vh + var(--scroll-p,0)*44vh),0)}
+@media (prefers-reduced-motion: reduce){.cm-bg-global::before{background-position:0 0}.cm-bg-global::after{transform:translate(-50%,-50%)}}

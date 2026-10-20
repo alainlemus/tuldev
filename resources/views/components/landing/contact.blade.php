@@ -1,6 +1,5 @@
 @props(['s'])
   <section id="contacto" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
-    <div class="cm-bgfx" aria-hidden="true"></div>
     <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
       <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&gt; iniciar_proyecto()</div>
       <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->contact_title }}</h2>

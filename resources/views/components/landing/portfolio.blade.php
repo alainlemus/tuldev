@@ -1,6 +1,5 @@
 @props(['s', 'projects'])
   <section id="portafolio" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 40px 24px 96px; display: flex; flex-direction: column; gap: 44px">
-    <div class="cm-bgfx" aria-hidden="true"></div>
     <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
       <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
         <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;portafolio&gt;</div>
