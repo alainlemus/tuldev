@@ -5,6 +5,9 @@ const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const clamp = (n, min = 0, max = 1) => Math.min(max, Math.max(min, n));
 
 const nav = document.querySelector('.cm-nav');
+const services = document.querySelector('#servicios');
+const portfolio = document.querySelector('#portafolio');
+const contact = document.querySelector('#contacto');
 const hero = document.querySelector('.cm-par')?.closest('section');
 const pin = document.querySelector('.cm-pin');
 const pinWords = pin ? [...pin.querySelectorAll('.cm-word, .cm-word-a')] : [];
@@ -43,10 +46,20 @@ function update(now) {
         const rect = pin.getBoundingClientRect();
         const travel = Math.max(rect.height - vh, 1);
         const progress = clamp(-rect.top / travel);
+        pin.style.setProperty('--pin-p', progress.toFixed(4));
         pinWords.forEach((word, i) => {
             word.classList.toggle('is-lit', progress >= 0.04 + 0.82 * (i / pinWords.length));
         });
     }
+
+    [services, portfolio, contact].forEach((section) => {
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        const progress = clamp((vh - rect.top) / (vh + rect.height));
+        section.style.setProperty('--svc-p', progress.toFixed(4));
+        section.style.setProperty('--ct-p', progress.toFixed(4));
+        section.style.setProperty('--pp', (progress * 2 - 1).toFixed(4));
+    });
 
     visibleImages.forEach((img) => {
         const rect = img.parentElement.getBoundingClientRect();
@@ -133,4 +146,78 @@ if (!reduceMotion && finePointer) {
             btn.style.setProperty('--ty', '0px');
         });
     });
+}
+
+// Servicios: los íconos se "dibujan" una vez, cuando su tarjeta entra en pantalla.
+if (services) {
+    services.querySelectorAll('.cm-card svg :is(path, rect, circle, ellipse)').forEach((shape) => shape.setAttribute('pathLength', '1'));
+
+    const drawObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-drawn');
+                    drawObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.35 },
+    );
+
+    services.querySelectorAll('.cm-card').forEach((card) => drawObserver.observe(card));
+}
+
+// Portafolio: asigna a cada tarjeta su velocidad de parallax según la columna en la que cae.
+function assignColumns() {
+    if (!portfolio || reduceMotion) return;
+    const cards = [...portfolio.querySelectorAll('.cm-proj')];
+    const lefts = [...new Set(cards.map((card) => card.offsetLeft))].sort((a, b) => a - b);
+    const speeds = { 1: [0], 2: [1, -1], 3: [1, 0, -1] }[Math.min(lefts.length, 3)] ?? [0];
+    cards.forEach((card) => card.style.setProperty('--k', speeds[lefts.indexOf(card.offsetLeft)] ?? 0));
+}
+
+assignColumns();
+addEventListener('resize', assignColumns, { passive: true });
+
+// Luz de fondo que sigue al cursor con un pequeño retraso suave.
+if (!reduceMotion && finePointer) {
+    const glow = document.createElement('div');
+    glow.className = 'cm-cursor-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(glow);
+
+    let targetX = innerWidth / 2;
+    let targetY = innerHeight / 3;
+    let x = targetX;
+    let y = targetY;
+    let running = false;
+
+    const follow = () => {
+        x += (targetX - x) * 0.14;
+        y += (targetY - y) * 0.14;
+        glow.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+
+        if (Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5) {
+            requestAnimationFrame(follow);
+        } else {
+            running = false;
+        }
+    };
+
+    addEventListener(
+        'pointermove',
+        (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            glow.classList.add('is-on');
+
+            if (!running) {
+                running = true;
+                requestAnimationFrame(follow);
+            }
+        },
+        { passive: true },
+    );
+
+    document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
 }

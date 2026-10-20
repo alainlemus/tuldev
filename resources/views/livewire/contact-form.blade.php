@@ -12,28 +12,28 @@
   <div id="cm-form-wrap">
     <form id="cm-form" wire:submit="submit" novalidate style="display: flex; flex-direction: column; gap: 18px">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
-            <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="cm-field" style="--i: 0; display: flex; flex-direction: column; gap: 8px">
               <label for="cm-nombre" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Nombre</label>
               <input id="cm-nombre" wire:model="name" type="text" required autocomplete="name" placeholder="Tu nombre" @error('name') aria-invalid="true" aria-describedby="cm-name-error" @enderror style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
               @error('name')<span id="cm-name-error" role="alert" style="font-size: 13px; color: #F08A8A">{{ $message }}</span>@enderror
             </div>
-            <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="cm-field" style="--i: 1; display: flex; flex-direction: column; gap: 8px">
               <label for="cm-negocio" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Negocio o empresa</label>
               <input id="cm-negocio" wire:model="business" type="text" autocomplete="organization" placeholder="Nombre de tu negocio" @error('business') aria-invalid="true" aria-describedby="cm-business-error" @enderror style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
               @error('business')<span id="cm-business-error" role="alert" style="font-size: 13px; color: #F08A8A">{{ $message }}</span>@enderror
             </div>
-            <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="cm-field" style="--i: 2; display: flex; flex-direction: column; gap: 8px">
               <label for="cm-tel" style="font-size: 14px; font-weight: 600; color: #D5DBE1">WhatsApp</label>
               <input id="cm-tel" wire:model="whatsapp" type="tel" required autocomplete="tel" placeholder="10 dígitos" @error('whatsapp') aria-invalid="true" aria-describedby="cm-whatsapp-error" @enderror style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
               @error('whatsapp')<span id="cm-whatsapp-error" role="alert" style="font-size: 13px; color: #F08A8A">{{ $message }}</span>@enderror
             </div>
-            <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="cm-field" style="--i: 3; display: flex; flex-direction: column; gap: 8px">
               <label for="cm-correo" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Correo</label>
               <input id="cm-correo" wire:model="email" type="email" autocomplete="email" placeholder="tu@correo.com" @error('email') aria-invalid="true" aria-describedby="cm-email-error" @enderror style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
               @error('email')<span id="cm-email-error" role="alert" style="font-size: 13px; color: #F08A8A">{{ $message }}</span>@enderror
             </div>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 8px">
+      <div class="cm-field" style="--i: 4; display: flex; flex-direction: column; gap: 8px">
         <label for="cm-tipo" style="font-size: 14px; font-weight: 600; color: #D5DBE1">¿Qué necesitas?</label>
         <select id="cm-tipo" wire:model="type" required @error('type') aria-invalid="true" aria-describedby="cm-type-error" @enderror style="height: 48px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px">
           <option value="">Elige una opción</option>
@@ -43,7 +43,7 @@
         </select>
         @error('type')<span id="cm-type-error" role="alert" style="font-size: 13px; color: #F08A8A">{{ $message }}</span>@enderror
       </div>
-      <div style="display: flex; flex-direction: column; gap: 8px">
+      <div class="cm-field" style="--i: 5; display: flex; flex-direction: column; gap: 8px">
         <label for="cm-msg" style="font-size: 14px; font-weight: 600; color: #D5DBE1">Cuéntanos tu proyecto</label>
         <textarea id="cm-msg" wire:model="message" rows="4" placeholder="¿A qué se dedica tu negocio y qué te gustaría resolver?" @error('message') aria-invalid="true" aria-describedby="cm-message-error" @enderror style="padding: 12px 14px; border-radius: 10px; border: 1px solid #2A333C; background: #0A0D10; color: #F1F4F6; font: inherit; font-size: 15px; line-height: 1.5; resize: vertical"></textarea>
         @error('message')<span id="cm-message-error" role="alert" style="font-size: 13px; color: #F08A8A">{{ $message }}</span>@enderror

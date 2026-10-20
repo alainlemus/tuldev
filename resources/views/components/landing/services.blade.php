@@ -1,5 +1,6 @@
 @props(['s', 'services'])
   <section id="servicios" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 80px 24px 96px; display: flex; flex-direction: column; gap: 44px">
+    <div class="cm-bgfx" aria-hidden="true"></div>
     <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
       <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;servicios&gt;</div>
       <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->services_title }}</h2>

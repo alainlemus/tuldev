@@ -128,3 +128,61 @@ section[id]{scroll-margin-top:72px}
 .cm-proj .cm-frame{transform:none}
 .cm-card::after{display:none}
 }
+
+/* Fondo de código de la frase fija: se desplaza con el scroll (--pin-p lo escribe scroll-fx.js) */
+.cm-code{display:none}
+.js .cm-pin-stick{overflow:hidden}
+.js .cm-code{display:flex;position:absolute;inset:0;justify-content:space-around;gap:24px;padding:0!important;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 62% 55% at 50% 50%,rgba(0,0,0,.14),#000 100%);mask-image:radial-gradient(ellipse 62% 55% at 50% 50%,rgba(0,0,0,.14),#000 100%)}
+.cm-code-col{margin:0;flex:1 1 0;min-width:0;max-width:520px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:24px;color:#2E3A44;white-space:pre;overflow:hidden;
+  will-change:transform;transform:translate3d(0,calc(var(--pin-p,0)*var(--spd)*var(--dir)*-1px - 120px),0)}
+.cm-code-col .k{color:#1C5E56}
+.cm-code-col .f{color:#3E5560}
+.cm-code-col .s{color:#2B6F66}
+.cm-code-col .c{color:#34414B}
+@media (max-width:820px){.cm-code-col:nth-child(n+2){display:none}.cm-code-col{max-width:none}}
+@media (prefers-reduced-motion: reduce){.cm-code-col{transform:none!important}}
+
+/* Servicios: rejilla con resplandor que se desplaza con el scroll (--svc-p) e íconos que se dibujan al entrar */
+html{overflow-x:clip}
+#servicios{position:relative;isolation:isolate}
+.cm-bgfx{position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent)}
+.cm-bgfx::before{content:"";position:absolute;inset:-160px 0;background-image:linear-gradient(rgba(31,191,169,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,191,169,.07) 1px,transparent 1px);background-size:56px 56px;
+  background-position:0 calc(var(--svc-p,0)*-160px);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 30%,transparent 80%)}
+.cm-bgfx::after{content:"";position:absolute;width:640px;height:640px;left:50%;top:50%;margin:-320px 0 0 -320px;border-radius:50%;background:radial-gradient(closest-side,rgba(31,191,169,.16),transparent);filter:blur(20px);
+  transform:translate3d(calc(-45vw + var(--svc-p,0)*90vw),calc(-18% + var(--svc-p,0)*36%),0);will-change:transform}
+.js #servicios .cm-card svg :is(path,rect,circle,ellipse){stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*120ms + .3s)}
+.js #servicios .cm-card.is-drawn svg :is(path,rect,circle,ellipse){stroke-dashoffset:0}
+@media (prefers-reduced-motion: reduce){
+.js #servicios .cm-card svg :is(path,rect,circle,ellipse){stroke-dashoffset:0;transition:none}
+.cm-bgfx::before{background-position:0 0}
+.cm-bgfx::after{transform:translate(-50%,-50%)}
+}
+
+/* Portafolio y contacto reutilizan el fondo de rejilla con resplandor de Servicios */
+#portafolio,#contacto{position:relative;isolation:isolate}
+
+/* Portafolio: las tarjetas se desplazan a distinto ritmo según su columna (--k lo calcula scroll-fx.js) */
+.cm-proj{translate:0 calc(var(--pp,0)*var(--k,0)*46px)}
+@media (prefers-reduced-motion: reduce){.cm-proj{translate:none}}
+
+/* Contacto: borde luminoso que gira con el scroll, campos escalonados y foco resaltado */
+.cm-zoom{position:relative}
+.cm-zoom::before{content:"";position:absolute;inset:-1px;border-radius:20px;padding:1px;pointer-events:none;
+  background:conic-gradient(from calc(var(--ct-p,0)*540deg) at 50% 50%,transparent 0 55%,rgba(31,191,169,.85) 78%,transparent 96%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+@supports (animation-timeline: view()){
+.cm-field{animation:cm-rise linear both;animation-timeline:view();animation-range:entry calc(var(--i,0)*3%) cover calc(22% + var(--i,0)*3%)}
+}
+.cm-field label{transition:color .25s ease}
+.cm-field:focus-within label{color:#5FE0CC!important}
+.cm-field input,.cm-field select,.cm-field textarea{transition:border-color .25s ease,box-shadow .3s ease,background-color .3s ease}
+.cm-field input:focus,.cm-field select:focus,.cm-field textarea:focus{box-shadow:0 0 0 4px rgba(31,191,169,.14);background-color:#0C1114}
+@media (prefers-reduced-motion: reduce){.cm-field{animation:none!important}.cm-zoom::before{background:none}}
+
+/* Luz que sigue al cursor (solo con mouse; la crea scroll-fx.js) */
+.cm-cursor-glow{position:fixed;left:0;top:0;width:620px;height:620px;margin:-310px 0 0 -310px;border-radius:50%;pointer-events:none;z-index:5;opacity:0;mix-blend-mode:screen;will-change:transform;
+  background:radial-gradient(closest-side,rgba(31,191,169,.17),rgba(31,191,169,.06) 48%,transparent);transition:opacity .5s ease}
+.cm-cursor-glow.is-on{opacity:1}
+@media (prefers-reduced-motion: reduce){.cm-cursor-glow{display:none}}
