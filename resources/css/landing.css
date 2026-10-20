@@ -193,3 +193,12 @@ html{overflow-x:clip}
 /* Los campos del formulario se encienden uno tras otro mientras el formulario aparece */
 .js .cm-zoom .cm-field{opacity:clamp(0,calc(var(--rv,0)*2.4 - var(--i,0)*.3),1);transform:translate3d(0,calc((1 - clamp(0,calc(var(--rv,0)*2.4 - var(--i,0)*.3),1))*28px),0)}
 @media (prefers-reduced-motion: reduce){.js .cm-scrub,.js .cm-zoom .cm-field{opacity:1;transform:none}}
+
+/* Móvil: menú compacto (logo + botón) para no tapar media pantalla */
+@media (max-width:640px){
+.cm-nav-link{display:none!important}
+.cm-nav header{flex-wrap:nowrap!important;padding:8px 16px!important;gap:12px!important}
+.cm-nav nav a.cm-btn{height:40px!important;padding:0 16px!important;margin-left:0!important;font-size:13px!important;white-space:nowrap}
+section[id]{scroll-margin-top:64px}
+}
+@media (max-width:640px){.cm-field input,.cm-field select,.cm-field textarea{font-size:16px!important}}

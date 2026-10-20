@@ -6,10 +6,10 @@
         <span style="font-size: 20px; font-weight: 800; letter-spacing: -0.03em">code<span style="color: #1FBFA9; font-weight: 500">&lt;</span>mida<span style="color: #1FBFA9; font-weight: 500">&gt;</span></span>
       </a>
       <nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 4px; align-items: center">
-        <a href="#servicios" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Servicios</a>
-        <a href="#portafolio" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Portafolio</a>
-        <a href="#apps" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Apps</a>
-        <a href="#contacto" class="cm-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Contacto</a>
+        <a href="#servicios" class="cm-link cm-nav-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Servicios</a>
+        <a href="#portafolio" class="cm-link cm-nav-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Portafolio</a>
+        <a href="#apps" class="cm-link cm-nav-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Apps</a>
+        <a href="#contacto" class="cm-link cm-nav-link" style="padding: 10px 12px; color: #B7C0C9; text-decoration: none; font-size: 14px; font-weight: 600">Contacto</a>
         <a href="#contacto" class="cm-btn" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; margin-left: 6px; border-radius: 999px; background: #F1F4F6; color: #08090B; text-decoration: none; font-size: 14px; font-weight: 700">Cotiza tu proyecto</a>
       </nav>
     </header>
