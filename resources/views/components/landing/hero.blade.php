@@ -22,10 +22,10 @@
 
     <div class="cm-hero-out" style="position: relative; flex-grow: 1; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 72px 24px 112px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
       <div class="cm-par-slow" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; color: #5FE0CC">{{ $s->hero_eyebrow }}</div>
-        <h1 style="margin: 0; font-size: clamp(40px, 5.4vw, 68px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; text-wrap: balance">{{ $s->hero_title }}</h1>
-        <p style="margin: 0; max-width: 520px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; color: #B7C0C9">{{ $s->hero_subtitle }}</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+        <div class="cm-in" style="--i: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; color: #5FE0CC">{{ $s->hero_eyebrow }}</div>
+        <h1 class="cm-in" style="--i: 1; margin: 0; font-size: clamp(40px, 5.4vw, 68px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; text-wrap: balance">{{ $s->hero_title }}</h1>
+        <p class="cm-in" style="--i: 2; margin: 0; max-width: 520px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; color: #B7C0C9">{{ $s->hero_subtitle }}</p>
+        <div class="cm-in" style="--i: 3; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
           <a href="#contacto" class="cm-btn" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; background: #1FBFA9; color: #06201C; text-decoration: none; font-size: 16px; font-weight: 700">{{ $s->hero_primary_label }}</a>
           <a href="#portafolio" class="cm-btn" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid #2A333C; background: rgba(8,9,11,0.6); color: #F1F4F6; text-decoration: none; font-size: 16px; font-weight: 600">{{ $s->hero_secondary_label }}</a>
         </div>
@@ -33,7 +33,7 @@
 
       <div class="cm-par" style="position: relative; flex: 1 1 460px; min-width: 0">
         <div aria-hidden="true" class="cm-anim" style="position: absolute; left: 10%; right: 10%; top: 10%; bottom: 10%; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,191,169,0.35), transparent); filter: blur(30px); animation: cm-glow 6s ease-in-out infinite"></div>
-        <figure role="img" aria-label="Terminal que muestra el proceso de un proyecto: analizar procesos, diseñar la base de datos, programar y entregar" style="position: relative; margin: 0; border-radius: 16px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
+        <figure class="cm-in" role="img" aria-label="Terminal que muestra el proceso de un proyecto: analizar procesos, diseñar la base de datos, programar y entregar" style="--i: 2; position: relative; margin: 0; border-radius: 16px; border: 1px solid #232B33; background: #0E1215; overflow: hidden">
           <div style="display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-bottom: 1px solid #1C2329">
             <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
             <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>

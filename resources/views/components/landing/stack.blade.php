@@ -3,9 +3,9 @@
     <div style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
       <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
         <div class="cm-reveal" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;stack&gt;</div>
-        <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->stack_title }}</h2>
+        <h2 class="cm-reveal cm-d1" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->stack_title }}</h2>
       </div>
-      <p class="cm-reveal" style="margin: 0; max-width: 440px; font-size: 17px; line-height: 1.6; color: #B7C0C9">{{ $s->stack_intro }}</p>
+      <p class="cm-reveal cm-d2" style="margin: 0; max-width: 440px; font-size: 17px; line-height: 1.6; color: #B7C0C9">{{ $s->stack_intro }}</p>
     </div>
     <div class="cm-reveal" style="display: flex; flex-direction: column; gap: 14px; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)">
         <div class="cm-marquee" style="overflow: hidden; padding: 4px 0">

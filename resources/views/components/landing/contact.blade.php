@@ -1,10 +1,10 @@
 @props(['s'])
   <section id="contacto" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
     <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&gt; iniciar_proyecto()</div>
-      <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->contact_title }}</h2>
-      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #B7C0C9">{{ $s->contact_intro }}</p>
-      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
+      <div class="cm-reveal" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&gt; iniciar_proyecto()</div>
+      <h2 class="cm-reveal cm-d1" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->contact_title }}</h2>
+      <p class="cm-reveal cm-d2" style="margin: 0; font-size: 17px; line-height: 1.6; color: #B7C0C9">{{ $s->contact_intro }}</p>
+      <div class="cm-reveal cm-d3" style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
         @if ($s->whatsapp_url)
         <a href="{{ $s->whatsapp_url }}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; color: #F1F4F6; text-decoration: none; font-size: 16px; font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1FBFA9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.6L4 20z"></path></svg>WhatsApp · {{ $s->contact_whatsapp }}</a>
         @endif

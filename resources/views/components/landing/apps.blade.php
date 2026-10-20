@@ -2,8 +2,8 @@
   <section id="apps" style="border-top: 1px solid #161B20; border-bottom: 1px solid #161B20; background: rgba(11,13,16,0.6)">
     <div style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
       <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
-        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;apps&gt;</div>
-        <h2 class="cm-reveal" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->apps_title }}</h2>
+        <div class="cm-reveal" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5FE0CC">&lt;apps&gt;</div>
+        <h2 class="cm-reveal cm-d1" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08">{{ $s->apps_title }}</h2>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px">
         @foreach ($apps as $app)
