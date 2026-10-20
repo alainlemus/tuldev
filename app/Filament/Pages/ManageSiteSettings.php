@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Filament\Pages;
+
+use App\Enums\HeroBackground;
+use App\Settings\SiteSettings;
+use BackedEnum;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Pages\SettingsPage;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+
+class ManageSiteSettings extends SettingsPage
+{
+    protected static string $settings = SiteSettings::class;
+
+    protected static ?string $title = 'Ajustes del sitio';
+
+    protected static ?string $navigationLabel = 'Ajustes del sitio';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Sitio';
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema->components([
+            Tabs::make()->columnSpanFull()->persistTabInQueryString()->tabs([
+                Tab::make('Hero')->schema([
+                    TextInput::make('hero_eyebrow')->label('Texto pequeño superior')->required(),
+                    TextInput::make('hero_title')->label('Título')->required(),
+                    Textarea::make('hero_subtitle')->label('Subtítulo')->rows(3)->required(),
+                    TextInput::make('hero_primary_label')->label('Botón principal')->required(),
+                    TextInput::make('hero_secondary_label')->label('Botón secundario')->required(),
+                    Select::make('hero_background')->label('Fondo animado')->options(HeroBackground::class)->required()->native(false),
+                ]),
+                Tab::make('Frase')->schema([
+                    Textarea::make('phrase')->label('Frase animada')->rows(3)->required(),
+                    TextInput::make('phrase_accent')->label('Parte final resaltada en verde')->required(),
+                ]),
+                Tab::make('Secciones')->columns(2)->schema([
+                    TextInput::make('services_title')->label('Servicios · título')->required(),
+                    Textarea::make('services_intro')->label('Servicios · introducción')->rows(2)->required(),
+                    TextInput::make('portfolio_title')->label('Portafolio · título')->required(),
+                    Textarea::make('portfolio_intro')->label('Portafolio · introducción')->rows(2)->required(),
+                    TextInput::make('apps_title')->label('Apps · título')->required()->columnSpanFull(),
+                    TextInput::make('stack_title')->label('Tecnologías · título')->required(),
+                    Textarea::make('stack_intro')->label('Tecnologías · introducción')->rows(2)->required(),
+                    TextInput::make('contact_title')->label('Contacto · título')->required(),
+                    Textarea::make('contact_intro')->label('Contacto · introducción')->rows(2)->required(),
+                    TextInput::make('footer_text')->label('Texto del pie de página')->required()->columnSpanFull(),
+                ]),
+                Tab::make('Contacto')->columns(2)->schema([
+                    TextInput::make('contact_whatsapp')->label('WhatsApp')->tel()->helperText('10 dígitos; los botones generan el enlace wa.me/52…'),
+                    TextInput::make('contact_email')->label('Correo de contacto')->email(),
+                    TextInput::make('contact_area')->label('Ciudad / zona de cobertura')->required(),
+                    TextInput::make('lead_notification_email')->label('Correo que recibe los leads')->email(),
+                    TextInput::make('business_phone')->label('Teléfono (datos estructurados)')->tel(),
+                    TextInput::make('business_address')->label('Dirección (datos estructurados)'),
+                ]),
+                Tab::make('SEO')->schema([
+                    TextInput::make('seo_title')->label('Título')->required()->maxLength(70),
+                    Textarea::make('seo_description')->label('Descripción')->rows(3)->required()->maxLength(180),
+                    FileUpload::make('seo_image')->label('Imagen para compartir (Open Graph)')->image()->disk('public')->directory('seo')->visibility('public'),
+                    Section::make('Redes sociales')->columns(2)->schema([
+                        TextInput::make('social_facebook')->label('Facebook')->url(),
+                        TextInput::make('social_instagram')->label('Instagram')->url(),
+                        TextInput::make('social_linkedin')->label('LinkedIn')->url(),
+                        TextInput::make('social_x')->label('X')->url(),
+                    ]),
+                ]),
+            ]),
+        ]);
+    }
+}
