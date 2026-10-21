@@ -68,6 +68,7 @@ class LandingContentSeeder extends Seeder
             ['bolivar', 'Funeraria García de Bolívar', 'Funeraria con más de 50 años de experiencia: servicios, panteones, obituario, testimonios y una guía para atravesar el duelo, con atención las 24 horas.', ['Sitio web', 'Obituario', 'Guía del duelo'], null, 21, -6, null],
             ['aguaysal', 'Agua y Sal', 'Tostadería de aguachiles y mariscos en Tulancingo: especialidades, menú por categorías con precios y reservación por WhatsApp.', ['Sitio web', 'Menú', 'Reservas'], null, 19, -10, null],
             ['donpapi', 'Asados Don Papi', 'Asados ahumados estilo americano: carta con precios, horarios de día y de noche, taquería, carnitas un sábado al mes, promociones y reservación por WhatsApp.', ['Sitio web', 'Carta', 'Reservas'], null, 17, -4, null],
+            ['novadent', 'NovaDent', 'Laboratorio dental en Tulancingo: prótesis fijas y removibles y protectores bucales a la medida, con proceso en cuatro pasos y cotización por WhatsApp.', ['Sitio web', 'Servicios', 'WhatsApp'], 'En desarrollo', 18, -8, null],
         ];
 
         foreach ($projects as $i => [$file, $name, $description, $tags, $badge, $duration, $delay, $alt]) {
