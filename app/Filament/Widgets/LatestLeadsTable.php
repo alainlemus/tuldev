@@ -17,7 +17,7 @@ class LatestLeadsTable extends TableWidget
     public function table(Table $table): Table
     {
         return $table
-            ->heading('Últimos 5 leads')
+            ->heading('Últimos 5 prospectos')
             ->query(fn () => Lead::query()->latest()->limit(5))
             ->columns([
                 TextColumn::make('created_at')->label('Recibido')->dateTime('d/m/Y H:i'),

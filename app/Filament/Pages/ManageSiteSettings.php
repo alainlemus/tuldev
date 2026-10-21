@@ -32,7 +32,7 @@ class ManageSiteSettings extends SettingsPage
     {
         return $schema->components([
             Tabs::make()->columnSpanFull()->persistTabInQueryString()->tabs([
-                Tab::make('Hero')->schema([
+                Tab::make('Portada')->schema([
                     TextInput::make('hero_eyebrow')->label('Texto pequeño superior')->required(),
                     TextInput::make('hero_title')->label('Título')->required(),
                     Textarea::make('hero_subtitle')->label('Subtítulo')->rows(3)->required(),
@@ -76,7 +76,7 @@ class ManageSiteSettings extends SettingsPage
                     TextInput::make('contact_email')->label('Correo de contacto')->email(),
                     TextInput::make('contact_whatsapp_message')->label('Mensaje inicial del botón flotante de WhatsApp')->required()->maxLength(200)->columnSpanFull(),
                     TextInput::make('contact_area')->label('Ciudad / zona de cobertura')->required(),
-                    TextInput::make('lead_notification_email')->label('Correo que recibe los leads')->email(),
+                    TextInput::make('lead_notification_email')->label('Correo que recibe los prospectos')->email(),
                     TextInput::make('business_phone')->label('Teléfono (datos estructurados)')->tel(),
                     TextInput::make('business_address')->label('Domicilio del negocio')->helperText('Se usa en el aviso de privacidad, en los términos y en los datos estructurados para buscadores.'),
                     TextInput::make('legal_name')->label('Nombre o razón social del responsable')->helperText('Persona física o moral que figura en el aviso de privacidad y en los términos.'),
@@ -86,7 +86,7 @@ class ManageSiteSettings extends SettingsPage
                     TextInput::make('seo_title')->label('Título')->required()->maxLength(70),
                     Textarea::make('seo_description')->label('Descripción')->rows(3)->required()->maxLength(180),
                     FileUpload::make('seo_image')
-                        ->label('Imagen para compartir (Open Graph)')
+                        ->label('Imagen para compartir en redes')
                         ->helperText('JPG o PNG de 1200×630 px. Si la dejas vacía se usa la imagen de Tuldev por defecto. No uses WebP: WhatsApp, LinkedIn y otras redes no lo leen bien.')
                         ->acceptedFileTypes(['image/jpeg', 'image/png'])
                         ->image()->disk('public')->directory('seo')->visibility('public'),

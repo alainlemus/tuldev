@@ -18,7 +18,7 @@ class NewLeadMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: "Nuevo lead: {$this->lead->name} · {$this->lead->type->getLabel()}",
+            subject: "Nuevo prospecto: {$this->lead->name} · {$this->lead->type->getLabel()}",
             replyTo: $this->lead->email ? [$this->lead->email] : [],
         );
     }

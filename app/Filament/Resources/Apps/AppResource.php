@@ -18,9 +18,9 @@ class AppResource extends Resource
 {
     protected static ?string $model = App::class;
 
-    protected static ?string $modelLabel = 'app';
+    protected static ?string $modelLabel = 'aplicación';
 
-    protected static ?string $pluralModelLabel = 'apps';
+    protected static ?string $pluralModelLabel = 'aplicaciones';
 
     protected static ?string $recordTitleAttribute = 'name';
 

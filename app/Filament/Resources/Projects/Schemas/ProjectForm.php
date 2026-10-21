@@ -22,7 +22,7 @@ class ProjectForm
                 ->maxLength(120)
                 ->live(onBlur: true)
                 ->afterStateUpdated(fn (Set $set, ?string $state, string $operation) => $operation === 'create' ? $set('slug', Str::slug((string) $state)) : null),
-            TextInput::make('slug')->label('Slug')->required()->unique(ignoreRecord: true)->maxLength(120),
+            TextInput::make('slug')->label('Identificador en la URL')->required()->unique(ignoreRecord: true)->maxLength(120),
             Textarea::make('description')->label('Descripción')->required()->rows(3)->columnSpanFull(),
             TagsInput::make('tags')
                 ->label('Etiquetas')

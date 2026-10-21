@@ -14,9 +14,9 @@ class TechnologyForm
     {
         return $schema->components([
             TextInput::make('name')->label('Nombre')->required()->maxLength(80),
-            Select::make('row')->label('Fila del marquee')->options([1 => 'Fila 1', 2 => 'Fila 2'])->required()->native(false)->default(1),
+            Select::make('row')->label('Fila del carrusel')->options([1 => 'Fila 1', 2 => 'Fila 2'])->required()->native(false)->default(1),
             FileUpload::make('logo')
-                ->label('Logo')
+                ->label('Logotipo')
                 ->acceptedFileTypes(['image/svg+xml', 'image/png'])
                 ->disk('public')
                 ->directory('technologies')

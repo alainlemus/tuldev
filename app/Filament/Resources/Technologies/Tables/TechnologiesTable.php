@@ -17,7 +17,7 @@ class TechnologiesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('logo')->label('Logo')->disk('public')->height(28),
+                ImageColumn::make('logo')->label('Logotipo')->disk('public')->height(28),
                 TextColumn::make('name')->label('Nombre')->searchable(),
                 TextColumn::make('row')->label('Fila')->badge()->color('gray')->formatStateUsing(fn (int $state) => "Fila {$state}"),
                 ToggleColumn::make('is_active')->label('Activo'),

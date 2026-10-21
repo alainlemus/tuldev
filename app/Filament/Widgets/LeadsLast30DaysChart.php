@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 class LeadsLast30DaysChart extends ChartWidget
 {
-    protected ?string $heading = 'Leads de los últimos 30 días';
+    protected ?string $heading = 'Prospectos de los últimos 30 días';
 
     protected static ?int $sort = 1;
 
@@ -31,7 +31,7 @@ class LeadsLast30DaysChart extends ChartWidget
 
         return [
             'datasets' => [[
-                'label' => 'Leads',
+                'label' => 'Prospectos',
                 'data' => $days->map(fn (Carbon $day) => $perDay->get($day->format('Y-m-d'), 0))->all(),
                 'borderColor' => '#1FBFA9',
                 'backgroundColor' => 'rgba(31,191,169,0.15)',

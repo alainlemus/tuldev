@@ -8,7 +8,7 @@ use Filament\Widgets\ChartWidget;
 
 class LeadsByTypeChart extends ChartWidget
 {
-    protected ?string $heading = 'Leads por tipo de proyecto';
+    protected ?string $heading = 'Prospectos por tipo de proyecto';
 
     protected static ?int $sort = 2;
 

@@ -20,11 +20,11 @@ class LeadResource extends Resource
 {
     protected static ?string $model = Lead::class;
 
-    protected static ?string $modelLabel = 'lead';
+    protected static ?string $modelLabel = 'prospecto';
 
-    protected static ?string $pluralModelLabel = 'leads';
+    protected static ?string $pluralModelLabel = 'prospectos';
 
-    protected static ?string $navigationLabel = 'Leads';
+    protected static ?string $navigationLabel = 'Prospectos';
 
     protected static ?string $recordTitleAttribute = 'name';
 
