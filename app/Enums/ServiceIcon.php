@@ -12,6 +12,8 @@ enum ServiceIcon: string implements HasLabel
     case Web = 'web';
     case Datos = 'datos';
     case Codigo = 'codigo';
+    case Factura = 'factura';
+    case Pagos = 'pagos';
 
     public function getLabel(): string
     {
@@ -22,6 +24,8 @@ enum ServiceIcon: string implements HasLabel
             self::Web => 'Globo web',
             self::Datos => 'Base de datos',
             self::Codigo => 'Código',
+            self::Factura => 'Factura',
+            self::Pagos => 'Tarjeta de pago',
         };
     }
 
@@ -35,6 +39,8 @@ enum ServiceIcon: string implements HasLabel
             self::Web => '<circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path>',
             self::Datos => '<ellipse cx="12" cy="5.5" rx="8" ry="3"></ellipse><path d="M4 5.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6M4 11.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path>',
             self::Codigo => '<path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16"></path>',
+            self::Factura => '<path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v4h4M9 12h6M9 16h6"></path>',
+            self::Pagos => '<rect x="2.5" y="5" width="19" height="14" rx="2.5"></rect><path d="M2.5 10h19M6.5 15h4"></path>',
         };
     }
 }
