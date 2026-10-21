@@ -115,10 +115,12 @@ class LandingContentSeeder extends Seeder
         $technologies = [
             ['PHP', 'php', 1], ['Laravel', 'laravel', 1], ['Livewire', 'livewire', 1], ['Filament', 'capas', 1],
             ['Vue', 'vuedotjs', 1], ['React', 'react', 1], ['Angular', 'angular', 1], ['MySQL', 'mysql', 1],
-            ['PostgreSQL', 'postgresql', 1], ['MongoDB', 'mongodb', 1],
+            ['PostgreSQL', 'postgresql', 1], ['MongoDB', 'mongodb', 1], ['Supabase', 'supabase', 1],
+            ['JavaScript', 'javascript', 1], ['HTML', 'html5', 1], ['CSS', 'css3', 1], ['Tailwind CSS', 'tailwindcss', 1],
+            ['Bootstrap', 'bootstrap', 1], ['Java', 'java', 1], ['Kotlin', 'kotlin', 1], ['Swift', 'swift', 1],
             ['React Native', 'react', 2], ['Expo', 'expo', 2], ['App Store Connect', 'appstore', 2],
             ['Google Play Console', 'googleplay', 2], ['VPS', 'servidor', 2], ['Docker', 'docker', 2],
-            ['Dokploy', 'cohete', 2], ['Hostinger', 'hostinger', 2], ['CLI', 'terminal', 2], ['GitHub', 'github', 2],
+            ['AWS', 'aws', 2], ['Dokploy', 'cohete', 2], ['Hostinger', 'hostinger', 2], ['CLI', 'terminal', 2], ['GitHub', 'github', 2],
             ['Stripe', 'stripe', 2], ['Facturapi', 'factura', 2], ['Resend', 'resend', 2], ['WhatsApp', 'whatsapp', 2],
             ['Apple Wallet', 'apple', 2], ['Google Wallet', 'wallet', 2],
         ];
