@@ -70,3 +70,13 @@ it('convierte a WebP la foto de un testimonio', function () {
 
     expect($testimonial->fresh()->photo)->toBe('testimonials/foto.webp');
 });
+
+it('muestra las zonas de cobertura y las oculta si no hay ninguna', function () {
+    $this->get('/')->assertOk()->assertSee(['Querétaro', 'Ciudad de México', 'Todo Hidalgo']);
+
+    $s = app(SiteSettings::class);
+    $s->coverage_places = '';
+    $s->save();
+
+    $this->get('/')->assertDontSee('Zonas donde tenemos clientes');
+});

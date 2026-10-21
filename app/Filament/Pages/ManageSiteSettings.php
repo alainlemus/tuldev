@@ -55,6 +55,8 @@ class ManageSiteSettings extends SettingsPage
                     TextInput::make('contact_title')->label('Contacto · título')->required(),
                     Textarea::make('contact_intro')->label('Contacto · introducción')->rows(2)->required(),
                     TextInput::make('stats_title')->label('Cifras · título (uso interno)')->required()->columnSpanFull(),
+                    TextInput::make('coverage_title')->label('Cobertura · título')->required(),
+                    Textarea::make('coverage_places')->label('Cobertura · lugares')->helperText('Uno por línea. Si lo dejas vacío, la franja no se muestra.')->rows(3),
                     TextInput::make('process_title')->label('Proceso · título')->required(),
                     Textarea::make('process_intro')->label('Proceso · introducción')->rows(2)->required(),
                     TextInput::make('testimonials_title')->label('Testimonios · título')->required(),

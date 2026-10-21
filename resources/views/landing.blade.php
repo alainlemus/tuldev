@@ -4,6 +4,7 @@
         <x-landing.hero :s="$s" />
         <x-landing.phrase :s="$s" />
         <x-landing.stats :s="$s" :stats="$stats" />
+        <x-landing.coverage :s="$s" />
         <x-landing.services :s="$s" :services="$services" />
         <x-landing.process :s="$s" :steps="$steps" />
         <x-landing.portfolio :s="$s" :projects="$projects" />

@@ -30,6 +30,8 @@ class SiteSettings extends Settings
     public string $footer_text;
 
     public string $stats_title;
+    public string $coverage_title;
+    public string $coverage_places;
     public string $process_title;
     public string $process_intro;
     public string $testimonials_title;
