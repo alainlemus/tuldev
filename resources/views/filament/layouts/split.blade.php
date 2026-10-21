@@ -28,7 +28,7 @@
 
     <div class="cm-login">
         <aside class="cm-login-brand" aria-hidden="true">
-            <img src="{{ asset('brand/svg/logotipo-horizontal-para-fondo-oscuro.svg') }}" alt="" height="36" style="height:36px;width:auto;align-self:flex-start">
+            <img src="{{ asset('brand/svg/nombre-solo-para-fondo-oscuro.svg') }}" alt="" height="36" style="height:36px;width:auto;align-self:flex-start">
 
             <div>
                 <h2>Tu sitio, bajo tu control.</h2>

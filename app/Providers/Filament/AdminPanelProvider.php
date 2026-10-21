@@ -33,8 +33,8 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::hex('#1FBFA9'),
             ])
             ->brandName('Tuldev')
-            ->brandLogo(asset('brand/svg/logotipo-horizontal-para-fondo-claro.svg'))
-            ->darkModeBrandLogo(asset('brand/svg/logotipo-horizontal-para-fondo-oscuro.svg'))
+            ->brandLogo(asset('brand/svg/nombre-solo-para-fondo-claro.svg'))
+            ->darkModeBrandLogo(asset('brand/svg/nombre-solo-para-fondo-oscuro.svg'))
             ->brandLogoHeight('2rem')
             ->favicon(asset('favicon.svg'))
             ->defaultThemeMode(ThemeMode::Dark)
