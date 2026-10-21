@@ -65,6 +65,9 @@ class LandingContentSeeder extends Seeder
             ['vrstudio', 'VR Studio Arquitectura', 'Despacho de arquitectura: servicios, obras realizadas y proceso de trabajo, del render a la obra terminada.', ['Sitio web', 'Portafolio de obras'], null, 20, -5, null],
             ['litesa', 'Grupo Litesa', 'Importadora y distribuidora: catálogo de iluminación LED, servicios de importación y blog, con modo claro y oscuro.', ['Sitio web', 'Catálogo', 'Blog'], null, 19, -13, null],
             ['mundofit', 'Mundo Fit', 'Gimnasio con 4 sucursales en Tulancingo: planes, sucursales y nutrición, con inscripción directa por WhatsApp.', ['Sitio web', 'Sucursales', 'Planes'], 'En desarrollo', 14, -3, null],
+            ['bolivar', 'Funeraria García de Bolívar', 'Funeraria con más de 50 años de experiencia: servicios, panteones, obituario, testimonios y una guía para atravesar el duelo, con atención las 24 horas.', ['Sitio web', 'Obituario', 'Guía del duelo'], null, 21, -6, null],
+            ['aguaysal', 'Agua y Sal', 'Tostadería de aguachiles y mariscos en Tulancingo: especialidades, menú por categorías con precios y reservación por WhatsApp.', ['Sitio web', 'Menú', 'Reservas'], null, 19, -10, null],
+            ['donpapi', 'Asados Don Papi', 'Asados y BBQ ahumado: menú, noticias y promociones, y reservación en línea.', ['Sitio web', 'Menú', 'Promociones'], null, 17, -4, null],
         ];
 
         foreach ($projects as $i => [$file, $name, $description, $tags, $badge, $duration, $delay, $alt]) {
@@ -161,7 +164,7 @@ class LandingContentSeeder extends Seeder
     {
         $stats = [
             ['15+', 'años de experiencia'],
-            ['9', 'proyectos en nuestro portafolio'],
+            [(string) Project::count(), 'proyectos en nuestro portafolio'],
             ['2', 'apps publicadas en tiendas'],
         ];
 
