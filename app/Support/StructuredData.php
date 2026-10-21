@@ -30,8 +30,15 @@ class StructuredData
             'telephone' => $s->business_phone,
             'email' => $s->contact_email,
             'address' => $address,
-            'areaServed' => ['@type' => 'Country', 'name' => 'México'],
-            'knowsAbout' => ['Desarrollo de software a la medida', 'Sistemas POS', 'Aplicaciones móviles', 'Tiendas en línea', 'Sitios web', 'Bases de datos'],
+            'areaServed' => [
+                ['@type' => 'City', 'name' => 'Tulancingo de Bravo'],
+                ['@type' => 'City', 'name' => 'Pachuca de Soto'],
+                ['@type' => 'State', 'name' => 'Hidalgo'],
+                ['@type' => 'State', 'name' => 'Querétaro'],
+                ['@type' => 'AdministrativeArea', 'name' => 'Ciudad de México'],
+                ['@type' => 'Country', 'name' => 'México'],
+            ],
+            'knowsAbout' => ['Desarrollo de software a la medida', 'Sistemas POS', 'Aplicaciones móviles', 'Páginas web', 'Tiendas en línea', 'Facturación electrónica CFDI', 'Pagos en línea', 'Bases de datos'],
             'sameAs' => array_values(array_filter([
                 $s->social_facebook, $s->social_instagram, $s->social_linkedin, $s->social_x,
             ])) ?: null,

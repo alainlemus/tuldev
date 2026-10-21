@@ -36,7 +36,7 @@ class LandingContentSeeder extends Seeder
             ['ventas/pos', ServiceIcon::Pos, 'Sistemas POS', 'Punto de venta para tu tienda, restaurante o farmacia: ventas, inventario, cortes de caja y reportes en un solo sistema.'],
             ['apps/movil', ServiceIcon::Movil, 'Apps móviles', 'Aplicaciones iOS y Android para tus clientes o tu equipo: pedidos, citas, tarjetas de lealtad, expedientes y trabajo en campo.'],
             ['tienda/online', ServiceIcon::Tienda, 'Tiendas en línea', 'Vende las 24 horas con catálogo, carrito, pagos con tarjeta y envíos, conectada a tu inventario real.'],
-            ['web/sitios', ServiceIcon::Web, 'Sitios web administrables', 'Páginas rápidas y bien posicionadas en Google, con panel para que actualices tu menú, productos o promociones sin depender de nadie.'],
+            ['web/sitios', ServiceIcon::Web, 'Páginas web administrables', 'Páginas rápidas y bien posicionadas en Google, con panel para que actualices tu menú, productos o promociones sin depender de nadie.'],
             ['datos/sql', ServiceIcon::Datos, 'Bases de datos', 'Diseño, migración y optimización de bases de datos: tu información ordenada, respaldada y lista para consultar.'],
             ['sat/cfdi', ServiceIcon::Factura, 'Facturación y timbrado en línea', 'Emite facturas electrónicas (CFDI) con timbrado en línea desde tu sistema o tu tienda: tus clientes facturan al instante y tú te olvidas de capturar a mano.'],
             ['pagos/online', ServiceIcon::Pagos, 'Pagos en línea', 'Cobra con tarjeta, transferencia o efectivo en tu sitio, tienda o app, con la confirmación del pago conectada directo a tu sistema.'],

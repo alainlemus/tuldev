@@ -72,7 +72,7 @@ it('convierte a WebP la foto de un testimonio', function () {
 });
 
 it('muestra las zonas de cobertura y las oculta si no hay ninguna', function () {
-    $this->get('/')->assertOk()->assertSee(['Querétaro', 'Ciudad de México', 'Todo Hidalgo']);
+    $this->get('/')->assertOk()->assertSee(['Querétaro', 'Ciudad de México', 'todo Hidalgo']);
 
     $s = app(SiteSettings::class);
     $s->coverage_places = '';
