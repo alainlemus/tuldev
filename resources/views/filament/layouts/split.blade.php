@@ -28,7 +28,7 @@
 
     <div class="cm-login">
         <aside class="cm-login-brand" aria-hidden="true">
-            <img src="{{ asset('brand/logotipo-oscuro.svg') }}" alt="" height="36" style="height:36px;width:auto;align-self:flex-start">
+            <img src="{{ asset('brand/svg/logotipo-horizontal-para-fondo-oscuro.svg') }}" alt="" height="36" style="height:36px;width:auto;align-self:flex-start">
 
             <div>
                 <h2>Tu sitio, bajo tu control.</h2>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="cm-login-term">
-                <u>$ codemida panel</u><br>
+                <u>$ tuldev panel</u><br>
                 <b>✓</b> contenido sincronizado<br>
                 <b>✓</b> leads al día<br>
                 <i>→ listo para vender</i>

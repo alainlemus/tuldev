@@ -26,7 +26,7 @@ return new class extends SettingsMigration
             'stack_intro' => 'Herramientas probadas en producción, elegidas según lo que tu proyecto necesita: del servidor a la tienda de apps.',
             'contact_title' => 'Cuéntanos de tu negocio',
             'contact_intro' => 'Déjanos tus datos y qué necesitas. Te contactamos para entender cómo trabajas y proponerte una solución, sin compromiso.',
-            'footer_text' => 'Software a la medida · Tulancingo, Hidalgo · © 2026 Codemida',
+            'footer_text' => 'Software a la medida · Tulancingo, Hidalgo · © 2026 Tuldev',
 
             'contact_whatsapp' => null,
             'contact_email' => null,
@@ -35,7 +35,7 @@ return new class extends SettingsMigration
             'business_phone' => null,
             'business_address' => null,
 
-            'seo_title' => 'Codemida · Software a la medida en Tulancingo, Hidalgo',
+            'seo_title' => 'Tuldev · Software a la medida en Tulancingo, Hidalgo',
             'seo_description' => 'Desarrollo de software a la medida: sistemas POS, apps móviles, tiendas en línea, sitios web y bases de datos. Más de 15 años de experiencia, desde Tulancingo, Hidalgo.',
             'seo_image' => null,
             'social_facebook' => null,

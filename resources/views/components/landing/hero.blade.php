@@ -38,10 +38,10 @@
             <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
             <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
             <span style="width: 11px; height: 11px; border-radius: 50%; background: #3A434C"></span>
-            <span style="margin-left: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">codemida — proyecto</span>
+            <span style="margin-left: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #8E99A4">tuldev — proyecto</span>
           </div>
           <div style="padding: 24px 22px 28px; display: flex; flex-direction: column; gap: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.5; min-height: 210px">
-            <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 25ch; color: #F1F4F6; animation: cm-t1 10s infinite">$ codemida nuevo-proyecto</span></div>
+            <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 23ch; color: #F1F4F6; animation: cm-t1 10s infinite">$ tuldev nuevo-proyecto</span></div>
             <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 33ch; color: #B7C0C9; animation: cm-t2 10s infinite"><span style="color: #1FBFA9">✓</span> analizando procesos del negocio</span></div>
             <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 25ch; color: #B7C0C9; animation: cm-t3 10s infinite"><span style="color: #1FBFA9">✓</span> diseñando base de datos</span></div>
             <div style="display: flex"><span class="cm-anim" style="display: inline-block; overflow: hidden; white-space: nowrap; width: 32ch; color: #B7C0C9; animation: cm-t4 10s infinite"><span style="color: #1FBFA9">✓</span> programando POS + app + tienda</span></div>

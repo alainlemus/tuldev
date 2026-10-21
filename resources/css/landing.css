@@ -17,7 +17,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #1FBFA9;outline-offset
 @keyframes cm-cell{0%,100%{opacity:0}45%,55%{opacity:1}}
 @keyframes cm-streak-x{from{transform:translateX(-240px)}to{transform:translateX(1700px)}}
 @keyframes cm-streak-y{from{transform:translateY(-240px)}to{transform:translateY(900px)}}
-@keyframes cm-t1{0%{width:0;animation-timing-function:steps(25,end)}12%{width:25ch}94%{width:25ch}100%{width:0}}
+@keyframes cm-t1{0%{width:0;animation-timing-function:steps(23,end)}12%{width:23ch}94%{width:23ch}100%{width:0}}
 @keyframes cm-t2{0%,16%{width:0;animation-timing-function:steps(33,end)}28%{width:33ch}94%{width:33ch}100%{width:0}}
 @keyframes cm-t3{0%,31%{width:0;animation-timing-function:steps(25,end)}41%{width:25ch}94%{width:25ch}100%{width:0}}
 @keyframes cm-t4{0%,44%{width:0;animation-timing-function:steps(32,end)}57%{width:32ch}94%{width:32ch}100%{width:0}}

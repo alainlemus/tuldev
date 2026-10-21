@@ -1,7 +1,7 @@
 <x-mail::message>
 # Nueva solicitud de contacto
 
-Recibiste un mensaje desde la landing de Codemida.
+Recibiste un mensaje desde la landing de Tuldev.
 
 <x-mail::table>
 | Dato | Detalle |

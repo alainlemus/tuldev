@@ -85,7 +85,7 @@ class ManageSiteSettings extends SettingsPage
                     Textarea::make('seo_description')->label('Descripción')->rows(3)->required()->maxLength(180),
                     FileUpload::make('seo_image')
                         ->label('Imagen para compartir (Open Graph)')
-                        ->helperText('JPG o PNG de 1200×630 px. Si la dejas vacía se usa la imagen de Codemida por defecto. No uses WebP: WhatsApp, LinkedIn y otras redes no lo leen bien.')
+                        ->helperText('JPG o PNG de 1200×630 px. Si la dejas vacía se usa la imagen de Tuldev por defecto. No uses WebP: WhatsApp, LinkedIn y otras redes no lo leen bien.')
                         ->acceptedFileTypes(['image/jpeg', 'image/png'])
                         ->image()->disk('public')->directory('seo')->visibility('public'),
                     Section::make('Redes sociales')->columns(2)->schema([

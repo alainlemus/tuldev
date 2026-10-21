@@ -18,7 +18,7 @@ class LegalPagesSeeder extends Seeder
             ['slug' => LegalPage::PRIVACY],
             [
                 'title' => 'Aviso de privacidad',
-                'meta_description' => 'Aviso de privacidad de Codemida: qué datos personales recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.',
+                'meta_description' => 'Aviso de privacidad de Tuldev: qué datos personales recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.',
                 'content' => $this->privacy(),
                 'sort' => 1,
                 'is_published' => true,
@@ -29,7 +29,7 @@ class LegalPagesSeeder extends Seeder
             ['slug' => LegalPage::TERMS],
             [
                 'title' => 'Términos y condiciones',
-                'meta_description' => 'Términos y condiciones de uso del sitio web de Codemida.',
+                'meta_description' => 'Términos y condiciones de uso del sitio web de Tuldev.',
                 'content' => $this->terms(),
                 'sort' => 2,
                 'is_published' => true,
@@ -43,7 +43,7 @@ class LegalPagesSeeder extends Seeder
 <p>En cumplimiento de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y su normativa aplicable, ponemos a tu disposición el presente Aviso de Privacidad.</p>
 
 <h2>1. Identidad y domicilio del responsable</h2>
-<p>El responsable del tratamiento de tus datos personales es <strong>{{responsable}}</strong>, con nombre comercial Codemida, con domicilio en {{domicilio}}. Sitio web: {{sitio}}. Correo para temas de privacidad: {{correo_privacidad}}.</p>
+<p>El responsable del tratamiento de tus datos personales es <strong>{{responsable}}</strong>, con nombre comercial Tuldev, con domicilio en {{domicilio}}. Sitio web: {{sitio}}. Correo para temas de privacidad: {{correo_privacidad}}.</p>
 
 <h2>2. Datos personales que recabamos</h2>
 <p>Cuando llenas el formulario de contacto de este sitio recabamos los siguientes datos:</p>
@@ -101,7 +101,7 @@ HTML;
 <p>Al acceder y utilizar el sitio web {{sitio}} (el «Sitio») aceptas estos Términos y Condiciones. Si no estás de acuerdo con ellos, te pedimos no utilizar el Sitio.</p>
 
 <h2>1. Quiénes somos</h2>
-<p>El Sitio es operado por <strong>{{responsable}}</strong>, con nombre comercial Codemida, con domicilio en {{domicilio}}. Puedes contactarnos en {{correo_privacidad}}.</p>
+<p>El Sitio es operado por <strong>{{responsable}}</strong>, con nombre comercial Tuldev, con domicilio en {{domicilio}}. Puedes contactarnos en {{correo_privacidad}}.</p>
 
 <h2>2. Objeto del sitio</h2>
 <p>El Sitio presenta información sobre nuestros servicios de desarrollo de software a la medida, nuestro portafolio y las formas de contactarnos. La información publicada tiene fines informativos.</p>

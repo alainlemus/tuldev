@@ -28,7 +28,7 @@ class Lead extends Model
     public function whatsappUrl(): string
     {
         $digits = preg_replace('/\D+/', '', $this->whatsapp);
-        $text = rawurlencode("Hola {$this->name}, te escribimos de Codemida sobre tu solicitud de {$this->type->getLabel()}.");
+        $text = rawurlencode("Hola {$this->name}, te escribimos de Tuldev sobre tu solicitud de {$this->type->getLabel()}.");
 
         return "https://wa.me/52{$digits}?text={$text}";
     }

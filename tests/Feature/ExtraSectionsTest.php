@@ -26,7 +26,7 @@ it('oculta las secciones sin contenido', function () {
         ->assertDontSee('id="proceso"', false)
         ->assertDontSee('id="faq"', false)
         ->assertDontSee('id="clientes"', false)
-        ->assertDontSee('Cifras de Codemida');
+        ->assertDontSee('Cifras de Tuldev');
 });
 
 it('no muestra las cifras si hay menos de dos publicadas', function () {

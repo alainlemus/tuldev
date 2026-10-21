@@ -46,7 +46,7 @@ it('marca como pendiente lo que falta capturar y usa el correo de contacto como 
 it('no permite HTML peligroso en el contenido', function () {
     LegalPage::where('slug', LegalPage::TERMS)->update(['content' => '<p>Texto</p><script>alert(1)</script><img src=x onerror=alert(2)>']);
 
-    $this->get('/terminos-y-condiciones')->assertSee('Texto')->assertDontSee('<script>alert(1)', false)->assertDontSee('<img', false);
+    $this->get('/terminos-y-condiciones')->assertSee('Texto')->assertDontSee('<script>alert(1)', false)->assertDontSee('onerror', false)->assertDontSee('<img src=x', false);
 });
 
 it('responde 404 si la página no está publicada o no existe', function () {

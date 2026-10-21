@@ -23,7 +23,7 @@ it('incluye meta tags, canonical y datos estructurados', function () {
         ->assertSee('"@type":"ProfessionalService"', false)
         ->assertSee('"@type":"WebSite"', false)
         ->assertSee('property="og:image"', false)
-        ->assertSee('images/og-codemida.jpg', false)
+        ->assertSee('brand/png/imagen-redes-1200x630.png', false)
         ->assertSee('name="twitter:card" content="summary_large_image"', false)
         ->assertSee('hreflang="es-MX"', false)
         ->assertSee('Tulancingo de Bravo', false)

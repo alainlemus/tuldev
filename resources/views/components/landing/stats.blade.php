@@ -1,6 +1,6 @@
 @props(['s', 'stats'])
 @if ($stats->count() >= 2)
-  <section aria-label="Cifras de Codemida" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 24px 24px 72px">
+  <section aria-label="Cifras de Tuldev" style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 24px 24px 72px">
     <div class="cm-scrub cm-stats" style="border-radius: 20px; border: 1px solid #232B33; background: rgba(14,18,21,0.72); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr))">
       @foreach ($stats as $stat)
       @php

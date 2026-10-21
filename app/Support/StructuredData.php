@@ -22,10 +22,10 @@ class StructuredData
         $business = array_filter([
             '@type' => 'ProfessionalService',
             '@id' => $site.'#organization',
-            'name' => 'Codemida',
+            'name' => 'Tuldev',
             'url' => $site,
             'description' => $s->seo_description,
-            'logo' => url('icon-512.png'),
+            'logo' => url('android-chrome-512x512.png'),
             'image' => $image,
             'telephone' => $s->business_phone,
             'email' => $s->contact_email,
@@ -53,7 +53,7 @@ class StructuredData
             '@type' => 'WebSite',
             '@id' => $site.'#website',
             'url' => $site,
-            'name' => 'Codemida',
+            'name' => 'Tuldev',
             'inLanguage' => 'es-MX',
             'publisher' => ['@id' => $site.'#organization'],
         ];

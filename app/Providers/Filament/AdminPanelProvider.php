@@ -32,11 +32,11 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::hex('#1FBFA9'),
             ])
-            ->brandName('Codemida')
-            ->brandLogo(asset('brand/logotipo-claro.svg'))
-            ->darkModeBrandLogo(asset('brand/logotipo-oscuro.svg'))
+            ->brandName('Tuldev')
+            ->brandLogo(asset('brand/svg/logotipo-horizontal-para-fondo-claro.svg'))
+            ->darkModeBrandLogo(asset('brand/svg/logotipo-horizontal-para-fondo-oscuro.svg'))
             ->brandLogoHeight('2rem')
-            ->favicon(asset('brand/isotipo.svg'))
+            ->favicon(asset('favicon.svg'))
             ->defaultThemeMode(ThemeMode::Dark)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

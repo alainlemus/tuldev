@@ -1,7 +1,7 @@
 <x-layouts.landing
     :s="$s"
     :services="$services"
-    :page-title="$page->title.' · Codemida'"
+    :page-title="$page->title.' · Tuldev'"
     :page-description="$page->meta_description ?: $s->seo_description"
     :canonical="route('legal', $page->slug)"
     :structured="false"

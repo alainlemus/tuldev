@@ -71,12 +71,12 @@ it('guarda el lead, normaliza el WhatsApp y muestra el éxito', function () {
 
 it('encola el correo al destinatario configurado', function () {
     $settings = app(SiteSettings::class);
-    $settings->lead_notification_email = 'leads@codemida.test';
+    $settings->lead_notification_email = 'leads@tuldev.test';
     $settings->save();
 
     fillAndSubmit(Livewire::test(ContactForm::class), validForm());
 
-    Mail::assertQueued(NewLeadMail::class, fn (NewLeadMail $mail) => $mail->hasTo('leads@codemida.test'));
+    Mail::assertQueued(NewLeadMail::class, fn (NewLeadMail $mail) => $mail->hasTo('leads@tuldev.test'));
 });
 
 it('no envía correo si no hay destinatario configurado', function () {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Página no encontrada · Codemida</title>
+<title>Página no encontrada · Tuldev</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="{{ asset('brand/isotipo.svg') }}" type="image/svg+xml">
 @vite(['resources/css/landing.css'])
