@@ -55,12 +55,12 @@ class ContactForm extends Component
     protected function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:120'],
-            'business' => ['nullable', 'string', 'max:120'],
+            'name' => ['required', 'string', 'min:2', 'max:120'],
+            'business' => ['required', 'string', 'min:2', 'max:120'],
             'whatsapp' => ['required', 'regex:/^\d{10}$/'],
-            'email' => ['nullable', 'email:rfc', 'max:190'],
+            'email' => ['required', 'email:rfc', 'max:190'],
             'type' => ['required', Rule::enum(LeadType::class)],
-            'message' => ['nullable', 'string', 'max:2000'],
+            'message' => ['required', 'string', 'min:10', 'max:2000'],
         ];
     }
 
@@ -81,9 +81,33 @@ class ContactForm extends Component
     protected function messages(): array
     {
         return [
+            'name.required' => 'Escribe tu nombre.',
+            'name.min' => 'Escribe tu nombre completo.',
+            'business.required' => 'Escribe el nombre de tu negocio o empresa.',
+            'business.min' => 'Escribe el nombre de tu negocio o empresa.',
+            'whatsapp.required' => 'Escribe tu número de WhatsApp.',
             'whatsapp.regex' => 'El WhatsApp debe tener 10 dígitos.',
+            'email.required' => 'Escribe tu correo electrónico.',
+            'email.email' => 'Escribe un correo válido, por ejemplo tu@correo.com.',
             'type.required' => 'Elige qué necesitas.',
+            'type.Illuminate\Validation\Rules\Enum' => 'Elige una de las opciones de la lista.',
+            'message.required' => 'Cuéntanos brevemente tu proyecto.',
+            'message.min' => 'Cuéntanos un poco más (mínimo 10 caracteres).',
         ];
+    }
+
+    /** Valida cada campo cuando la persona sale de él, para avisarle antes de enviar. */
+    public function updated(string $property): void
+    {
+        if (! in_array($property, ['name', 'business', 'whatsapp', 'email', 'type', 'message'], true)) {
+            return;
+        }
+
+        if ($property === 'whatsapp') {
+            $this->whatsapp = preg_replace('/\D+/', '', $this->whatsapp) ?? '';
+        }
+
+        $this->validateOnly($property);
     }
 
     public function submit(): void

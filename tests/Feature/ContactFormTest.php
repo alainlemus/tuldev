@@ -43,7 +43,45 @@ it('renderiza el formulario en la landing', function () {
 it('valida los campos requeridos', function () {
     Livewire::test(ContactForm::class)
         ->call('submit')
-        ->assertHasErrors(['name' => 'required', 'whatsapp' => 'required', 'type' => 'required']);
+        ->assertHasErrors([
+            'name' => 'required', 'business' => 'required', 'whatsapp' => 'required',
+            'email' => 'required', 'type' => 'required', 'message' => 'required',
+        ]);
+});
+
+it('exige cada campo por separado', function (string $field) {
+    $component = Livewire::test(ContactForm::class);
+
+    fillAndSubmit($component, validForm([$field => '']))->assertHasErrors([$field => 'required']);
+
+    expect(Lead::count())->toBe(0);
+})->with(['name', 'business', 'whatsapp', 'email', 'type', 'message']);
+
+it('exige un mensaje de al menos 10 caracteres', function () {
+    fillAndSubmit(Livewire::test(ContactForm::class), validForm(['message' => 'Hola']))
+        ->assertHasErrors(['message' => 'min']);
+});
+
+it('valida cada campo en cuanto se llena, sin esperar al envío', function () {
+    Livewire::test(ContactForm::class)
+        ->set('email', 'no-es-correo')->assertHasErrors(['email' => 'email'])
+        ->set('email', 'ana@example.com')->assertHasNoErrors('email')
+        ->set('whatsapp', '123')->assertHasErrors(['whatsapp' => 'regex'])
+        ->set('whatsapp', '775 123 4567')->assertHasNoErrors('whatsapp')->assertSet('whatsapp', '7751234567');
+});
+
+it('muestra los mensajes de error en español', function () {
+    Livewire::test(ContactForm::class)
+        ->call('submit')
+        ->assertSee('Escribe tu nombre.')
+        ->assertSee('Escribe tu correo electrónico.')
+        ->assertSee('Cuéntanos brevemente tu proyecto.');
+});
+
+it('marca todos los campos como obligatorios en el formulario', function () {
+    $html = $this->get('/')->getContent();
+
+    expect(substr_count($html, 'aria-required="true"'))->toBe(6);
 });
 
 it('valida el formato del WhatsApp, del correo y del tipo', function () {
