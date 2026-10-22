@@ -71,6 +71,7 @@ class LandingContentSeeder extends Seeder
             ['aguaysal', 'Agua y Sal', 'Tostadería de aguachiles y mariscos en Tulancingo: especialidades, menú por categorías con precios y reservación por WhatsApp.', ['Sitio web', 'Menú', 'Reservas'], null, 19, -10, null],
             ['donpapi', 'Asados Don Papi', 'Asados ahumados estilo americano: carta con precios, horarios de día y de noche, taquería, carnitas un sábado al mes, promociones y reservación por WhatsApp.', ['Sitio web', 'Carta', 'Reservas'], null, 17, -4, null],
             ['novadent', 'NovaDent', 'Laboratorio dental en Tulancingo: prótesis fijas y removibles y protectores bucales a la medida, con proceso en cuatro pasos y cotización por WhatsApp.', ['Sitio web', 'Servicios', 'WhatsApp'], 'En desarrollo', 18, -8, null],
+            ['closet', 'Closet Jaltepec', 'Tienda en línea de ropa, calzado y fragancias de marca a precio de outlet en Tulancingo: catálogo por categorías, carrito y pagos con Mercado Pago.', ['Tienda en línea', 'Catálogo', 'Pagos en línea'], null, 19, -6, 'Recorrido por la tienda en línea Closet Jaltepec'],
         ];
 
         foreach ($projects as $i => [$file, $name, $description, $tags, $badge, $duration, $delay, $alt]) {
