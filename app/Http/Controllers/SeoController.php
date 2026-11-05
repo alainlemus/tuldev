@@ -14,7 +14,7 @@ class SeoController extends Controller
 {
     public function robots(): Response
     {
-        $body = "User-agent: *\nDisallow: /admin\nDisallow: /livewire\n\nSitemap: ".url('/sitemap.xml')."\n";
+        $body = "User-agent: *\nDisallow: /admin\n\nSitemap: ".url('/sitemap.xml')."\n";
 
         return response($body, 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
     }
