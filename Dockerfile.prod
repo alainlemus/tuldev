@@ -1,0 +1,105 @@
+# syntax=docker/dockerfile:1
+
+FROM composer:2 AS composer-deps
+WORKDIR /app
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts --ignore-platform-reqs
+
+# .npmrc fuerza legacy-peer-deps (bug de npm con Arborist): sin él falla `npm ci`.
+FROM node:22-alpine AS frontend-builder
+WORKDIR /app
+COPY package*.json .npmrc ./
+RUN npm ci
+COPY resources ./resources
+COPY public ./public
+COPY vite.config.js ./
+RUN npm run build
+
+FROM php:8.4-fpm-alpine AS app
+WORKDIR /var/www/html
+
+ENV APP_ENV=production \
+    APP_DEBUG=false \
+    VIEW_COMPILED_PATH=/var/www/html/bootstrap/cache/views
+
+# nginx + php-fpm + supervisor. su-exec: correr los comandos de arranque como
+# www-data desde el entrypoint (que corre como root para iniciar supervisor).
+RUN apk add --no-cache \
+        nginx \
+        supervisor \
+        su-exec \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        freetype-dev \
+        libwebp-dev \
+        libxml2-dev \
+        libzip-dev \
+        icu-dev \
+        oniguruma-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-install pdo_mysql bcmath gd zip intl mbstring opcache pcntl
+
+RUN { \
+        echo 'upload_max_filesize=20M'; \
+        echo 'post_max_size=20M'; \
+        echo 'max_execution_time=300'; \
+        echo 'memory_limit=256M'; \
+        echo 'display_errors=Off'; \
+        echo 'expose_php=Off'; \
+    } > /usr/local/etc/php/conf.d/prod.ini \
+    && { \
+        echo 'opcache.enable=1'; \
+        echo 'opcache.enable_cli=1'; \
+        echo 'opcache.memory_consumption=192'; \
+        echo 'opcache.interned_strings_buffer=16'; \
+        echo 'opcache.max_accelerated_files=20000'; \
+        echo 'opcache.validate_timestamps=0'; \
+    } > /usr/local/etc/php/conf.d/opcache.ini
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer-deps /app/vendor ./vendor
+
+COPY . .
+COPY --from=frontend-builder /app/public/build ./public/build
+
+# Las vistas compiladas viven en la imagen (bootstrap/cache/views), no en el
+# volumen persistente de storage/: cada despliegue arranca sin vistas viejas.
+RUN mkdir -p bootstrap/cache/views \
+    storage/logs \
+    storage/app/public \
+    storage/app/private/livewire-tmp \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views
+
+# Los assets de Filament están en .gitignore y --no-scripts omite filament:upgrade:
+# sin filament:assets el panel /admin se queda sin CSS ni JS.
+RUN composer dump-autoload --optimize --no-scripts \
+    && php artisan package:discover --ansi \
+    && php artisan filament:assets
+
+# public/storage → storage/app/public: se crea aquí porque en runtime el proceso
+# ya no puede escribir en public/.
+RUN ln -sfn ../storage/app/public public/storage \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R ug+rwx storage bootstrap/cache
+
+COPY docker/app/nginx.conf /etc/nginx/http.d/default.conf
+COPY docker/app/supervisord.conf /etc/supervisord.conf
+COPY docker/app/entrypoint.sh /usr/local/bin/entrypoint
+# nginx corre como www-data (igual que php-fpm): sin permiso sobre su carpeta temporal
+# responde 500 a las peticiones de más de 16 KB antes de llegar a Laravel.
+RUN chmod +x /usr/local/bin/entrypoint \
+    && sed -i 's/^user nginx;/user www-data;/' /etc/nginx/nginx.conf \
+    && mkdir -p /var/lib/nginx/tmp \
+    && chown -R www-data:www-data /var/lib/nginx
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+    CMD wget -qO- "http://127.0.0.1:${PORT:-8000}/up" || exit 1
+
+# docker/app/entrypoint.sh corre las migraciones y cachea config/rutas/vistas con las
+# variables de Dokploy, y deja a supervisor a cargo de nginx, php-fpm y los trabajadores
+# de colas. Variables opcionales: PORT (8000), QUEUE_WORKERS (1), FPM_MAX_CHILDREN (8).
+CMD ["/usr/local/bin/entrypoint"]

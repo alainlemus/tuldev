@@ -18,6 +18,12 @@ Landing de Tuldev ("software a la medida", Tulancingo, Hidalgo). El diseño apro
 - URL local: https://tuldev.test (Herd).
 - Admin: seeder crea usuario solo si `ADMIN_EMAIL` y `ADMIN_PASSWORD` están en `.env`; si no, `php artisan make:filament-user`.
 
+## Despliegue (Dokploy)
+- `Dockerfile.prod` (rama `main`) y `Dockerfile.dev` (ambiente de pruebas); la configuración de runtime vive en `docker/app/`.
+- Contenedor único: nginx + php-fpm + colas, en el puerto **8000** (Container Port en Dokploy). No hay scheduler porque no hay tareas programadas.
+- El arranque corre las migraciones, pero no los seeders: la primera vez, `php artisan db:seed --force` en la terminal del contenedor.
+- `storage/` debe ser un volumen persistente: ahí viven las imágenes subidas desde el panel.
+
 ## Estructura
 - `app/Filament/` Resources, páginas y widgets · `app/Models/` · `app/Settings/` · `app/Livewire/` formulario de contacto.
 - `resources/views/components/landing/` un componente Blade por sección.
