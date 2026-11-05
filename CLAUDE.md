@@ -29,5 +29,6 @@ Landing de Tuldev ("software a la medida", Tulancingo, Hidalgo). El diseño apro
 - Todo el texto, imágenes y listados de la landing salen de la base de datos; en Blade solo la estructura.
 - No inventar datos de la empresa (teléfonos, direcciones, precios, cifras). Si faltan, campo vacío en Ajustes.
 - Nunca escribir credenciales en código; van en `.env`.
-- Commits locales por fase, en español. Sin `git push`.
+- Trabajar siempre en la rama `dev`, nunca directo en `main`. Commits por fase, en español.
+- Repositorio: https://github.com/alainlemus/tuldev
 - Cada cambio de contenido limpia la caché de la landing.
