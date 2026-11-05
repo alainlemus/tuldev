@@ -43,6 +43,10 @@ it('sirve robots.txt bloqueando el panel y apuntando al sitemap', function () {
         ->assertSee('Sitemap: '.url('/sitemap.xml'), false);
 });
 
+it('no bloquea en robots.txt el JavaScript de Livewire que usa la página', function () {
+    $this->get('/robots.txt')->assertDontSee('/livewire', false);
+});
+
 it('sirve un sitemap.xml válido', function () {
     $this->get('/sitemap.xml')
         ->assertOk()
