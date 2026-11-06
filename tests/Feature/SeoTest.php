@@ -36,6 +36,21 @@ it('no inventa teléfono ni dirección en los datos estructurados', function () 
     expect($json)->not->toContain('"telephone"')->not->toContain('"streetAddress"');
 });
 
+it('ubica el negocio en Tulancingo sin publicar el domicilio fiscal a los buscadores', function () {
+    $settings = app(SiteSettings::class);
+    $settings->business_address = 'Calle Fiscal 123, Ciudad de México';
+    $settings->business_phone = '55 1234 5678';
+    $settings->save();
+
+    $html = $this->get('/')->getContent();
+
+    expect($html)
+        ->toContain('"addressLocality":"Tulancingo de Bravo"')
+        ->toContain('"telephone":"+525512345678"')
+        ->not->toContain('"streetAddress"')
+        ->not->toContain('Calle Fiscal 123');
+});
+
 it('sirve robots.txt bloqueando el panel y apuntando al sitemap', function () {
     $this->get('/robots.txt')
         ->assertOk()
