@@ -33,10 +33,12 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::hex('#1FBFA9'),
             ])
             ->brandName('Tuldev')
-            ->brandLogo(asset('brand/svg/nombre-solo-para-fondo-claro.svg'))
-            ->darkModeBrandLogo(asset('brand/svg/nombre-solo-para-fondo-oscuro.svg'))
+            // Con closures: el panel se registra antes de que Laravel sepa que la petición llegó
+            // por https detrás de Traefik, y el navegador bloquea un favicon en http.
+            ->brandLogo(fn () => asset('brand/svg/nombre-solo-para-fondo-claro.svg'))
+            ->darkModeBrandLogo(fn () => asset('brand/svg/nombre-solo-para-fondo-oscuro.svg'))
             ->brandLogoHeight('2rem')
-            ->favicon(asset('favicon.svg'))
+            ->favicon(fn () => asset('favicon.svg'))
             ->defaultThemeMode(ThemeMode::Dark)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
