@@ -11,13 +11,13 @@ class StructuredData
     {
         $site = url('/');
 
-        $address = array_filter([
+        // Solo la ciudad: business_address es el domicilio fiscal de las páginas legales y puede estar en otra ciudad.
+        $address = [
             '@type' => 'PostalAddress',
-            'streetAddress' => $s->business_address,
             'addressLocality' => 'Tulancingo de Bravo',
             'addressRegion' => 'Hidalgo',
             'addressCountry' => 'MX',
-        ]);
+        ];
 
         $business = array_filter([
             '@type' => 'ProfessionalService',
@@ -27,7 +27,7 @@ class StructuredData
             'description' => $s->seo_description,
             'logo' => url('android-chrome-512x512.png'),
             'image' => $image,
-            'telephone' => $s->business_phone,
+            'telephone' => self::internationalPhone($s->business_phone),
             'email' => $s->contact_email,
             'address' => $address,
             'areaServed' => [
@@ -80,5 +80,13 @@ class StructuredData
         }
 
         return ['@context' => 'https://schema.org', '@graph' => $graph];
+    }
+
+    /** Agrega la lada de México a los números de 10 dígitos; cualquier otro formato se respeta. */
+    private static function internationalPhone(?string $phone): ?string
+    {
+        $digits = preg_replace('/\D+/', '', (string) $phone);
+
+        return strlen($digits) === 10 ? '+52'.$digits : $phone;
     }
 }

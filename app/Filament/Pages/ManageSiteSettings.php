@@ -78,7 +78,7 @@ class ManageSiteSettings extends SettingsPage
                     TextInput::make('contact_area')->label('Ciudad / zona de cobertura')->required(),
                     TextInput::make('lead_notification_email')->label('Correo que recibe los prospectos')->email(),
                     TextInput::make('business_phone')->label('Teléfono (datos estructurados)')->tel(),
-                    TextInput::make('business_address')->label('Domicilio del negocio')->helperText('Se usa en el aviso de privacidad, en los términos y en los datos estructurados para buscadores.'),
+                    TextInput::make('business_address')->label('Domicilio fiscal')->helperText('Solo se muestra en el aviso de privacidad y en los términos. Para buscadores, el negocio se ubica en Tulancingo.'),
                     TextInput::make('legal_name')->label('Nombre o razón social del responsable')->helperText('Persona física o moral que figura en el aviso de privacidad y en los términos.'),
                     TextInput::make('privacy_email')->label('Correo para derechos ARCO (privacidad)')->email()->helperText('Si lo dejas vacío se usa el correo de contacto.'),
                 ]),
