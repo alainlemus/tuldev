@@ -51,6 +51,29 @@ it('ubica el negocio en Tulancingo sin publicar el domicilio fiscal a los buscad
         ->not->toContain('Calle Fiscal 123');
 });
 
+it('menciona el desarrollo de software en Tulancingo en la portada y en los servicios', function () {
+    $this->get('/')
+        ->assertSee('{ desarrollo de software en Tulancingo }', false)
+        ->assertSee('Desarrollo de software a la medida en Tulancingo, Hidalgo:', false)
+        ->assertSee('Desarrollo de software en Tulancingo, con un solo equipo', false)
+        ->assertSee('Para negocios de Tulancingo y la región', false);
+});
+
+it('enfoca en Tulancingo los textos sin tocar lo editado desde el panel', function () {
+    $faq = \App\Models\Faq::factory()->create();
+    $original = Service::factory()->create([
+        'title' => 'Tiendas en línea',
+        'description' => 'Vende las 24 horas con catálogo, carrito, pagos con tarjeta y envíos, conectada a tu inventario real.',
+    ]);
+    $edited = Service::factory()->create(['title' => 'Sistemas POS', 'description' => 'Texto propio']);
+
+    (require database_path('migrations/2026_11_06_100000_focus_services_copy_on_tulancingo.php'))->up();
+
+    expect($original->fresh()->description)->toStartWith('Tu tienda en línea desde Tulancingo')
+        ->and($edited->fresh()->description)->toBe('Texto propio')
+        ->and(\App\Models\Faq::where('question', 'like', '%servicios de desarrollo de software%')->first()->sort)->toBe($faq->sort + 1);
+});
+
 it('sirve robots.txt bloqueando el panel y apuntando al sitemap', function () {
     $this->get('/robots.txt')
         ->assertOk()
