@@ -33,10 +33,10 @@ class LandingContentSeeder extends Seeder
     private function services(): void
     {
         $services = [
-            ['ventas/pos', ServiceIcon::Pos, 'Sistemas POS', 'Punto de venta para tu tienda, restaurante o farmacia: ventas, inventario, cortes de caja y reportes en un solo sistema.'],
+            ['ventas/pos', ServiceIcon::Pos, 'Sistemas POS', 'Punto de venta para tu tienda, restaurante o farmacia en Tulancingo: ventas, inventario, cortes de caja y reportes en un solo sistema.'],
             ['apps/movil', ServiceIcon::Movil, 'Apps móviles', 'Aplicaciones iOS y Android para tus clientes o tu equipo: pedidos, citas, tarjetas de lealtad, expedientes y trabajo en campo.'],
-            ['tienda/online', ServiceIcon::Tienda, 'Tiendas en línea', 'Vende las 24 horas con catálogo, carrito, pagos con tarjeta y envíos, conectada a tu inventario real.'],
-            ['web/sitios', ServiceIcon::Web, 'Páginas web administrables', 'Páginas rápidas y bien posicionadas en Google, con panel para que actualices tu menú, productos o promociones sin depender de nadie.'],
+            ['tienda/online', ServiceIcon::Tienda, 'Tiendas en línea', 'Tu tienda en línea desde Tulancingo: vende las 24 horas con catálogo, carrito, pagos con tarjeta y envíos, conectada a tu inventario real.'],
+            ['web/sitios', ServiceIcon::Web, 'Páginas web administrables', 'Páginas web en Tulancingo, rápidas y bien posicionadas en Google, con panel para que actualices tu menú, productos o promociones sin depender de nadie.'],
             ['datos/sql', ServiceIcon::Datos, 'Bases de datos', 'Diseño, migración y optimización de bases de datos: tu información ordenada, respaldada y lista para consultar.'],
             ['sat/cfdi', ServiceIcon::Factura, 'Facturación y timbrado en línea', 'Emite facturas electrónicas (CFDI) con timbrado en línea desde tu sistema o tu tienda: tus clientes facturan al instante y tú te olvidas de capturar a mano.'],
             ['pagos/online', ServiceIcon::Pagos, 'Pagos en línea', 'Cobra con tarjeta, transferencia o efectivo en tu sitio, tienda o app, con la confirmación del pago conectada directo a tu sistema.'],
@@ -158,6 +158,7 @@ class LandingContentSeeder extends Seeder
             ['¿Solo trabajan en Tulancingo?', 'Estamos en Tulancingo, Hidalgo, y desarrollamos proyectos para negocios de todo México.'],
             ['¿Cómo empiezo?', 'Déjanos tus datos en el formulario o escríbenos por WhatsApp. Te contactamos para entender cómo trabajas y proponerte una solución, sin compromiso.'],
             ['¿Puedo actualizar yo mismo el contenido de mi sitio?', 'Sí. Los sitios incluyen un panel para que actualices tu menú, tus productos o tus promociones sin depender de nadie.'],
+            ['¿Qué servicios de desarrollo de software ofrecen en Tulancingo?', 'Desarrollamos páginas web, tiendas en línea, sistemas POS, apps móviles, bases de datos, facturación y timbrado en línea, pagos en línea y sistemas a la medida para negocios de Tulancingo y la región.'],
         ];
 
         foreach ($faqs as $i => [$question, $answer]) {
