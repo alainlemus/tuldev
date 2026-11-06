@@ -51,12 +51,28 @@ it('ubica el negocio en Tulancingo sin publicar el domicilio fiscal a los buscad
         ->not->toContain('Calle Fiscal 123');
 });
 
-it('menciona el desarrollo de software en Tulancingo en la portada y en los servicios', function () {
+it('menciona el desarrollo de software en Tulancingo y Pachuca en la portada y en los servicios', function () {
     $this->get('/')
+        ->assertSee('<title>Desarrollo de software en Tulancingo y Pachuca | Tuldev</title>', false)
         ->assertSee('{ desarrollo de software en Tulancingo }', false)
-        ->assertSee('Desarrollo de software a la medida en Tulancingo, Hidalgo:', false)
-        ->assertSee('Desarrollo de software en Tulancingo, con un solo equipo', false)
-        ->assertSee('Para negocios de Tulancingo y la región', false);
+        ->assertSee('Desarrollo de software a la medida en Tulancingo y Pachuca, Hidalgo:', false)
+        ->assertSee('Desarrollo de software en Tulancingo y Pachuca, con un solo equipo', false)
+        ->assertSee('Para negocios de Tulancingo, Pachuca y todo Hidalgo', false);
+});
+
+it('agrega Pachuca a los servicios sin tocar lo editado desde el panel', function () {
+    \App\Models\Faq::factory()->create();
+    $original = Service::factory()->create([
+        'title' => 'Páginas web administrables',
+        'description' => 'Páginas web en Tulancingo, rápidas y bien posicionadas en Google, con panel para que actualices tu menú, productos o promociones sin depender de nadie.',
+    ]);
+    $edited = Service::factory()->create(['title' => 'Sistemas POS', 'description' => 'Texto propio']);
+
+    (require database_path('migrations/2026_11_06_100001_add_pachuca_to_services_copy.php'))->up();
+
+    expect($original->fresh()->description)->toStartWith('Páginas web en Tulancingo y Pachuca')
+        ->and($edited->fresh()->description)->toBe('Texto propio')
+        ->and(\App\Models\Faq::where('question', 'like', '%negocios de Pachuca%')->exists())->toBeTrue();
 });
 
 it('enfoca en Tulancingo los textos sin tocar lo editado desde el panel', function () {
